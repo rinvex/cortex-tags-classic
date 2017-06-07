@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Transformers\Backend;
 
-use League\Fractal\TransformerAbstract;
 use Cortex\Taggable\Models\Tag;
+use League\Fractal\TransformerAbstract;
 
 class TagTransformer extends TransformerAbstract
 {
