@@ -39,7 +39,7 @@ class TaggableServiceProvider extends ServiceProvider
         $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
             app('menus.sidebar')->put('management', app('menus.sidebar.management'));
             app('menus.sidebar.management')->put('header', '<li class="header">'.trans('cortex/fort::navigation.headers.management').'</li>');
-            app('menus.sidebar.management')->put('tags', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tags.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tags.index').'"><i class="fa fa-leaf"></i> <span>'.trans('cortex/taggable::navigation.menus.tags').'</span></a></li>');
+            app('menus.sidebar.management')->put('tags', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tags.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tags.index').'"><i class="fa fa-tags"></i> <span>'.trans('cortex/taggable::navigation.menus.tags').'</span></a></li>');
         });
     }
 
