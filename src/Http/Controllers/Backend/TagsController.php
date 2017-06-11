@@ -91,10 +91,10 @@ class TagsController extends AuthorizedController
     protected function process(Request $request, Tag $tag)
     {
         // Prepare required input fields
-        $input = $request->all();
+        $data = $request->all();
 
         // Save tag
-        $tag->fill($input)->save();
+        $tag->fill($data)->save();
 
         return intend([
             'url' => route('backend.tags.index'),
