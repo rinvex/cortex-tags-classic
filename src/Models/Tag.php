@@ -7,7 +7,7 @@ namespace Cortex\Taggable\Models;
 use Rinvex\Taggable\Tag as BaseTag;
 
 /**
- * Cortex\Taggable\Models\Tag
+ * Cortex\Taggable\Models\Tag.
  *
  * @property int            $id
  * @property string         $slug
@@ -18,6 +18,7 @@ use Rinvex\Taggable\Tag as BaseTag;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string         $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|\Rinvex\Taggable\Tag ordered($direction = 'asc')
  * @method static \Illuminate\Database\Query\Builder|\Cortex\Taggable\Models\Tag whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Cortex\Taggable\Models\Tag whereDeletedAt($value)
