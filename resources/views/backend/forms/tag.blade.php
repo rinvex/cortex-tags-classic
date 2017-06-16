@@ -6,6 +6,10 @@
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/taggable::common.tags') }} » {{ $tag->exists ? $tag->slug : trans('cortex/taggable::common.create_tag') }}
 @stop
 
+@push('scripts')
+    {!! JsValidator::formRequest(Cortex\Taggable\Http\Requests\Backend\TagFormRequest::class)->selector('#backend-tags-save') !!}
+@endpush
+
 {{-- Main Content --}}
 @section('content')
 
@@ -28,9 +32,9 @@
         <section class="content">
 
             @if ($tag->exists)
-                {{ Form::model($tag, ['url' => route('backend.tags.update', ['tag' => $tag]), 'method' => 'put']) }}
+                {{ Form::model($tag, ['url' => route('backend.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => 'backend-tags-save']) }}
             @else
-                {{ Form::model($tag, ['url' => route('backend.tags.store')]) }}
+                {{ Form::model($tag, ['url' => route('backend.tags.store'), 'id' => 'backend-tags-save']) }}
             @endif
 
                 <div class="nav-tabs-custom">

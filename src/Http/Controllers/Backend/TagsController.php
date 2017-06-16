@@ -7,6 +7,7 @@ namespace Cortex\Taggable\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use Cortex\Taggable\Models\Tag;
 use Cortex\Taggable\DataTables\Backend\TagsDataTable;
+use Cortex\Taggable\Http\Requests\Backend\TagFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
 class TagsController extends AuthorizedController
@@ -29,11 +30,11 @@ class TagsController extends AuthorizedController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Cortex\Taggable\Http\Requests\Backend\TagFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagFormRequest $request)
     {
         return $this->process($request, new Tag());
     }
@@ -41,12 +42,12 @@ class TagsController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Illuminate\Http\Request    $request
-     * @param \Cortex\Taggable\Models\Tag $tag
+     * @param \Cortex\Taggable\Http\Requests\Backend\TagFormRequest $request
+     * @param \Cortex\Taggable\Models\Tag                           $tag
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagFormRequest $request, Tag $tag)
     {
         return $this->process($request, $tag);
     }
