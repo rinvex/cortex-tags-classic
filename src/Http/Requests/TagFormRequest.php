@@ -20,23 +20,6 @@ class TagFormRequest extends FormRequest
     }
 
     /**
-     * Process given request data before validation.
-     *
-     * @param array $data
-     *
-     * @return array
-     */
-    public function process($data)
-    {
-        // Sync categories
-        if (! empty($data['categoryList'])) {
-            $data['categories'] = $data['categoryList'];
-        }
-
-        return $data;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
