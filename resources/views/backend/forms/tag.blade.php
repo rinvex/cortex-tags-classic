@@ -31,22 +31,22 @@
         <!-- Main content -->
         <section class="content">
 
-            @if ($tag->exists)
-                {{ Form::model($tag, ['url' => route('backend.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => 'backend-tags-save']) }}
-            @else
-                {{ Form::model($tag, ['url' => route('backend.tags.store'), 'id' => 'backend-tags-save']) }}
-            @endif
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/taggable::common.details') }}</a></li>
+                    @if($tag->exists) <li><a href="{{ route('backend.tags.logs', ['tag' => $tag]) }}">{{ trans('cortex/taggable::common.logs') }}</a></li> @endif
+                    @if($tag->exists && $currentUser->can('delete-tags', $tag)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.tags.delete', ['tag' => $tag]) }}" data-item-name="{{ $tag->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
+                </ul>
 
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/taggable::common.details') }}</a></li>
-                        @if($tag->exists) <li><a href="{{ route('backend.tags.logs', ['tag' => $tag]) }}">{{ trans('cortex/taggable::common.logs') }}</a></li> @endif
-                        @if($tag->exists && $currentUser->can('delete-tags', $tag)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.tags.delete', ['tag' => $tag]) }}" data-item-name="{{ $tag->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
-                    </ul>
+                <div class="tab-content">
 
-                    <div class="tab-content">
+                    <div class="tab-pane active" id="details-tab">
 
-                        <div class="tab-pane active" id="details-tab">
+                        @if ($tag->exists)
+                            {{ Form::model($tag, ['url' => route('backend.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => 'backend-tags-save']) }}
+                        @else
+                            {{ Form::model($tag, ['url' => route('backend.tags.store'), 'id' => 'backend-tags-save']) }}
+                        @endif
 
                             <div class="row">
 
@@ -98,27 +98,27 @@
 
                             </div>
 
-                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
 
-                        <div class="row">
-                            <div class="col-md-12">
+                                    <div class="pull-right">
+                                        {{ Form::button(trans('cortex/taggable::common.reset'), ['class' => 'btn btn-default btn-flat', 'type' => 'reset']) }}
+                                        {{ Form::button(trans('cortex/taggable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
+                                    </div>
 
-                                <div class="pull-right">
-                                    {{ Form::button(trans('cortex/taggable::common.reset'), ['class' => 'btn btn-default btn-flat', 'type' => 'reset']) }}
-                                    {{ Form::button(trans('cortex/taggable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
+                                    @include('cortex/foundation::backend.partials.timestamps', ['model' => $tag])
+
                                 </div>
-
-                                @include('cortex/foundation::backend.partials.timestamps', ['model' => $tag])
 
                             </div>
 
-                        </div>
+                        {{ Form::close() }}
 
                     </div>
 
                 </div>
 
-            {{ Form::close() }}
+            </div>
 
         </section>
 
