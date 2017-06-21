@@ -6,6 +6,7 @@ namespace Cortex\Taggable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Cortex\Taggable\Models\Tag;
+use Illuminate\Support\Facades\DB;
 use Cortex\Taggable\DataTables\Backend\TagsDataTable;
 use Cortex\Taggable\Http\Requests\Backend\TagFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -78,7 +79,9 @@ class TagsController extends AuthorizedController
      */
     public function form(Tag $tag)
     {
-        return view('cortex/taggable::backend.forms.tag', compact('tag'));
+        $groups = DB::table(config('rinvex.taggable.tables.tags'))->distinct()->select(['group'])->get()->pluck('group', 'group')->toArray();
+
+        return view('cortex/taggable::backend.forms.tag', compact('tag', 'groups'));
     }
 
     /**
