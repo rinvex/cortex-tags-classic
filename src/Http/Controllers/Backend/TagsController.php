@@ -25,7 +25,7 @@ class TagsController extends AuthorizedController
      */
     public function index()
     {
-        return app(TagsDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['resource' => 'cortex/taggable::common.tags']);
+        return app(TagsDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['id' => 'cortex-taggable-tags', 'phrase' => trans('cortex/taggable::common.tags')]);
     }
 
     /**
