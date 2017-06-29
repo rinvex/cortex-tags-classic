@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Taggable\Models;
 
 use Rinvex\Taggable\Tag as BaseTag;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Cortex\Taggable\Models\Tag.
@@ -34,5 +35,36 @@ use Rinvex\Taggable\Tag as BaseTag;
  */
 class Tag extends BaseTag
 {
-    //
+    use LogsActivity;
+
+    /**
+     * Indicates whether to log only dirty attributes or all.
+     *
+     * @var bool
+     */
+    protected static $logOnlyDirty = true;
+
+    /**
+     * The attributes that are logged on change.
+     *
+     * @var array
+     */
+    protected static $logAttributes = [
+        'slug',
+        'name',
+        'description',
+        'sort_order',
+        'group',
+    ];
+
+    /**
+     * The attributes that are ignored on change.
+     *
+     * @var array
+     */
+    protected static $ignoreChangedAttributes = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 }
