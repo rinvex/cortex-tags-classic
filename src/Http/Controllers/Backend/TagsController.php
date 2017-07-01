@@ -7,6 +7,7 @@ namespace Cortex\Taggable\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use Cortex\Taggable\Models\Tag;
 use Illuminate\Support\Facades\DB;
+use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Taggable\DataTables\Backend\TagsDataTable;
 use Cortex\Taggable\Http\Requests\Backend\TagFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -26,6 +27,21 @@ class TagsController extends AuthorizedController
     public function index()
     {
         return app(TagsDataTable::class)->render('cortex/foundation::backend.partials.datatable', ['id' => 'cortex-taggable-tags', 'phrase' => trans('cortex/taggable::common.tags')]);
+    }
+
+    /**
+     * Display a listing of the resource logs.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logs(Tag $tag)
+    {
+        return app(LogsDataTable::class)->with([
+            'type' => 'tags',
+            'resource' => $tag,
+            'id' => 'cortex-taggable-tags-logs',
+            'phrase' => trans('cortex/taggable::common.tags')
+        ])->render('cortex/foundation::backend.partials.datatable-logs');
     }
 
     /**
