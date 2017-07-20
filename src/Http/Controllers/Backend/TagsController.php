@@ -6,7 +6,6 @@ namespace Cortex\Taggable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Cortex\Taggable\Models\Tag;
-use Illuminate\Support\Facades\DB;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Taggable\DataTables\Backend\TagsDataTable;
 use Cortex\Taggable\Http\Requests\Backend\TagFormRequest;
