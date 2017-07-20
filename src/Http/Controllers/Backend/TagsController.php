@@ -98,7 +98,7 @@ class TagsController extends AuthorizedController
      */
     public function form(Tag $tag)
     {
-        $groups = DB::table(config('rinvex.taggable.tables.tags'))->distinct()->select(['group'])->get()->pluck('group', 'group')->toArray();
+        $groups = Tag::distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
         return view('cortex/taggable::backend.forms.tag', compact('tag', 'groups'));
     }
