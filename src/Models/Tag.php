@@ -12,13 +12,13 @@ use Spatie\Activitylog\Traits\LogsActivity;
  *
  * @property int                                                                                 $id
  * @property string                                                                              $slug
- * @property array                                                                               $description
+ * @property string                                                                              $name
+ * @property string                                                                              $description
  * @property int                                                                                 $sort_order
  * @property string|null                                                                         $group
  * @property \Carbon\Carbon|null                                                                 $created_at
  * @property \Carbon\Carbon|null                                                                 $updated_at
  * @property \Carbon\Carbon|null                                                                 $deleted_at
- * @property array                                                                               $name
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Taggable\Tag ordered($direction = 'asc')
