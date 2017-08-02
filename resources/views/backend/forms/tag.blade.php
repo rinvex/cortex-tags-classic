@@ -18,14 +18,10 @@
     @endif
 
     <div class="content-wrapper">
-        <!-- Breadcrumbs -->
         <section class="content-header">
             <h1>{{ $tag->exists ? $tag->slug : trans('cortex/taggable::common.create_tag') }}</h1>
-            <ol class="breadcrumb">
-                <li><a href="{{ route('backend.home') }}"><i class="fa fa-dashboard"></i> {{ trans('cortex/foundation::common.backend') }}</a></li>
-                <li><a href="{{ route('backend.tags.index') }}">{{ trans('cortex/taggable::common.tags') }}</a></li>
-                <li class="active">{{ $tag->exists ? $tag->slug : trans('cortex/taggable::common.create_tag') }}</li>
-            </ol>
+            <!-- Breadcrumbs -->
+            {{ Breadcrumbs::render() }}
         </section>
 
         <!-- Main content -->
