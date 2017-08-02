@@ -1,6 +1,6 @@
 # Cortex Taggable
 
-Cortex Taggable is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.
+**Cortex Taggable** is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/taggable.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/taggable)
 [![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:taggable.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:taggable/)
