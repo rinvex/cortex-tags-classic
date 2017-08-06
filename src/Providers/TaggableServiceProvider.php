@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Providers;
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class TaggableServiceProvider extends ServiceProvider
