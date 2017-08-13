@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Providers;
 
-use Cortex\Taggable\Models\Tag;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 
 class TaggableServiceProvider extends ServiceProvider
 {

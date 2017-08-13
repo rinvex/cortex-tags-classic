@@ -41,8 +41,8 @@ class TagPolicy
     /**
      * Determine whether the user can update the tag.
      *
-     * @param string                                $ability
-     * @param \Cortex\Fort\Models\User              $user
+     * @param string                      $ability
+     * @param \Cortex\Fort\Models\User    $user
      * @param \Cortex\Taggable\Models\Tag $resource
      *
      * @return bool
@@ -55,8 +55,8 @@ class TagPolicy
     /**
      * Determine whether the user can delete the tag.
      *
-     * @param string                                $ability
-     * @param \Cortex\Fort\Models\User              $user
+     * @param string                      $ability
+     * @param \Cortex\Fort\Models\User    $user
      * @param \Cortex\Taggable\Models\Tag $resource
      *
      * @return bool
