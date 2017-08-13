@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Providers;
 
+use Cortex\Taggable\Models\Tag;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class TaggableServiceProvider extends ServiceProvider
 {
@@ -22,18 +24,6 @@ class TaggableServiceProvider extends ServiceProvider
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
-
-        // Register sidebar menus
-        $this->app->singleton('menus.sidebar.management', function ($app) {
-            return collect();
-        });
-
-        // Register menu items
-        $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
-            app('menus.sidebar')->put('management', app('menus.sidebar.management'));
-            app('menus.sidebar.management')->put('header', '<li class="header">'.trans('cortex/fort::navigation.headers.management').'</li>');
-            app('menus.sidebar.management')->put('tags', '<li '.(mb_strpos(request()->route()->getName(), 'backend.tags.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.tags.index').'"><i class="fa fa-tags"></i> <span>'.trans('cortex/taggable::navigation.menus.tags').'</span></a></li>');
-        });
     }
 
     /**
