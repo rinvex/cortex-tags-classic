@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Taggable\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Cortex\Taggable\Console\Commands\SeedCommand;
+use Cortex\Taggable\Console\Commands\MigrateCommand;
 
 class TaggableServiceProvider extends ServiceProvider
 {
@@ -34,6 +36,7 @@ class TaggableServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/taggable');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/taggable');
+        $this->commands([SeedCommand::class, MigrateCommand::class]);
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
