@@ -37,6 +37,9 @@ class TaggableServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/taggable');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/taggable');
         $this->commands([SeedCommand::class, MigrateCommand::class]);
+        $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus.php';
+        });
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
