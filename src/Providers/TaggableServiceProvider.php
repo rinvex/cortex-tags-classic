@@ -11,6 +11,16 @@ use Cortex\Taggable\Console\Commands\MigrateCommand;
 class TaggableServiceProvider extends ServiceProvider
 {
     /**
+     * The commands to be registered.
+     *
+     * @var array
+     */
+    protected $commands = [
+        MigrateCommand::class => 'command.cortex.taggable.migrate',
+        SeedCommand::class => 'command.cortex.taggable.seed',
+    ];
+
+    /**
      * Register any application services.
      *
      * This service provider is a great spot to register your various container
@@ -21,7 +31,14 @@ class TaggableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Register artisan commands
+        foreach ($this->commands as $key => $value) {
+            $this->app->singleton($value, function ($app) use ($key) {
+                return new $key();
+            });
+        }
+
+        $this->commands(array_values($this->commands));
     }
 
     /**
@@ -36,7 +53,6 @@ class TaggableServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/taggable');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/taggable');
-        $this->commands([SeedCommand::class, MigrateCommand::class]);
         $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
         });
