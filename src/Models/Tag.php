@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Models;
 
-use Rinvex\Taggable\Tag as BaseTag;
+use Rinvex\Taggable\Models\Tag as BaseTag;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -21,7 +21,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property \Carbon\Carbon|null                                                                 $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Taggable\Tag ordered($direction = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Taggable\Models\Tag ordered($direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereDescription($value)
@@ -31,7 +31,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereSortOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Taggable\Tag withGroup($group = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Taggable\Models\Tag withGroup($group = null)
  * @mixin \Eloquent
  */
 class Tag extends BaseTag
