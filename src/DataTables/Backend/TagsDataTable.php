@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\DataTables\Backend;
 
-use Cortex\Taggable\Models\Tag;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Taggable\Transformers\Backend\TagTransformer;
 
@@ -13,7 +12,7 @@ class TagsDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = Tag::class;
+    protected $model = 'rinvex.taggable.tag';
 
     /**
      * {@inheritdoc}
@@ -27,7 +26,7 @@ class TagsDataTable extends AbstractDataTable
      */
     public function query()
     {
-        $query = ($this->model)::query()->orderBy('group', 'ASC');
+        $query = app($this->model)->query()->orderBy('group', 'ASC');
 
         return $this->applyScopes($query);
     }

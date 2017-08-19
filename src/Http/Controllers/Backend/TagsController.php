@@ -55,7 +55,7 @@ class TagsController extends AuthorizedController
      */
     public function store(TagFormRequest $request)
     {
-        return $this->process($request, new Tag());
+        return $this->process($request, app('rinvex.taggable.tag'));
     }
 
     /**
@@ -97,7 +97,7 @@ class TagsController extends AuthorizedController
      */
     public function form(Tag $tag)
     {
-        $groups = Tag::distinct()->get(['group'])->pluck('group', 'group')->toArray();
+        $groups = app('rinvex.taggable.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
         return view('cortex/taggable::backend.forms.tag', compact('tag', 'groups'));
     }

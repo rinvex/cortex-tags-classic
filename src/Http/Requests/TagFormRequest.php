@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Http\Requests\Backend;
 
-use Cortex\Taggable\Models\Tag;
 use Rinvex\Support\Http\Requests\FormRequest;
 
 class TagFormRequest extends FormRequest
@@ -26,7 +25,7 @@ class TagFormRequest extends FormRequest
      */
     public function rules()
     {
-        $tag = $this->route('tag') ?? new Tag();
+        $tag = $this->route('tag') ?? app('rinvex.taggable.tag');
         $tag->updateRulesUniques();
 
         return $tag->getRules();
