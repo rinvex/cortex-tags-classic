@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\DataTables\Backend;
 
+use Cortex\Taggable\Models\Tag;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Taggable\Transformers\Backend\TagTransformer;
 
@@ -12,7 +13,7 @@ class TagsDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = 'rinvex.taggable.tag';
+    protected $model = Tag::class;
 
     /**
      * {@inheritdoc}
@@ -72,9 +73,11 @@ class TagsDataTable extends AbstractDataTable
      */
     public function ajax()
     {
+        $transformer = app($this->transformer);
+
         return $this->datatables
             ->eloquent($this->query())
-            ->setTransformer(new $this->transformer())
+            ->setTransformer($transformer)
             ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
