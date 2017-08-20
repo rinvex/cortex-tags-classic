@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/taggable::common.tags') }} » {{ $tag->exists ? $tag->slug : trans('cortex/taggable::common.create_tag') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/taggable::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/taggable::common.create_tag') }}
 @stop
 
 @push('scripts')
@@ -19,7 +19,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>{{ $tag->exists ? $tag->slug : trans('cortex/taggable::common.create_tag') }}</h1>
+            <h1>{{ $tag->exists ? $tag->name : trans('cortex/taggable::common.create_tag') }}</h1>
             <!-- Breadcrumbs -->
             {{ Breadcrumbs::render() }}
         </section>
