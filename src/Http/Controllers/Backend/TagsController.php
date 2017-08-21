@@ -28,7 +28,7 @@ class TagsController extends AuthorizedController
         return app(TagsDataTable::class)->with([
             'id' => 'cortex-taggable-tags',
             'phrase' => trans('cortex/taggable::common.tags'),
-        ])->render('cortex/foundation::backend.partials.datatable');
+        ])->render('cortex/foundation::backend.pages.datatable');
     }
 
     /**
@@ -43,7 +43,7 @@ class TagsController extends AuthorizedController
             'resource' => $tag,
             'id' => 'cortex-taggable-tags-logs',
             'phrase' => trans('cortex/taggable::common.tags'),
-        ])->render('cortex/foundation::backend.partials.datatable-logs');
+        ])->render('cortex/foundation::backend.pages.datatable-logs');
     }
 
     /**
