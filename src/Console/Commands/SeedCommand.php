@@ -23,7 +23,7 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Seed Default Cortex Taggable data.';
+    protected $description = 'Seed Cortex Taggable Data.';
 
     /**
      * Execute the console command.
