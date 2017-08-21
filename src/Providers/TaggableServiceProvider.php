@@ -7,6 +7,8 @@ namespace Cortex\Taggable\Providers;
 use Cortex\Taggable\Models\Tag;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Taggable\Console\Commands\SeedCommand;
+use Cortex\Taggable\Console\Commands\InstallCommand;
+use Cortex\Taggable\Console\Commands\PublishCommand;
 use Cortex\Taggable\Console\Commands\MigrateCommand;
 
 class TaggableServiceProvider extends ServiceProvider
@@ -18,6 +20,8 @@ class TaggableServiceProvider extends ServiceProvider
      */
     protected $commands = [
         MigrateCommand::class => 'command.cortex.taggable.migrate',
+        PublishCommand::class => 'command.cortex.taggable.publish',
+        InstallCommand::class => 'command.cortex.taggable.install',
         SeedCommand::class => 'command.cortex.taggable.seed',
     ];
 
