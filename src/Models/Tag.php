@@ -10,16 +10,16 @@ use Spatie\Activitylog\Traits\LogsActivity;
 /**
  * Cortex\Taggable\Models\Tag.
  *
- * @property int                                                                                 $id
- * @property string                                                                              $slug
- * @property string                                                                              $name
- * @property string                                                                              $description
- * @property int                                                                                 $sort_order
- * @property string|null                                                                         $group
- * @property \Carbon\Carbon|null                                                                 $created_at
- * @property \Carbon\Carbon|null                                                                 $updated_at
- * @property \Carbon\Carbon|null                                                                 $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activity
+ * @property int                                                                           $id
+ * @property string                                                                        $slug
+ * @property array                                                                         $name
+ * @property array                                                                         $description
+ * @property int                                                                           $sort_order
+ * @property string                                                                        $group
+ * @property \Carbon\Carbon                                                                $created_at
+ * @property \Carbon\Carbon                                                                $updated_at
+ * @property \Carbon\Carbon                                                                $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Taggable\Models\Tag ordered($direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Taggable\Models\Tag whereCreatedAt($value)
