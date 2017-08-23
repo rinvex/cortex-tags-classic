@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Taggable\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use Cortex\Taggable\Models\Tag;
+use Rinvex\Taggable\Contracts\TagContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Taggable\DataTables\Backend\TagsDataTable;
 use Cortex\Taggable\Http\Requests\Backend\TagFormRequest;
@@ -36,7 +36,7 @@ class TagsController extends AuthorizedController
      *
      * @return \Illuminate\Http\Response
      */
-    public function logs(Tag $tag)
+    public function logs(TagContract $tag)
     {
         return app(LogsDataTable::class)->with([
             'type' => 'tags',
@@ -62,11 +62,11 @@ class TagsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Taggable\Http\Requests\Backend\TagFormRequest $request
-     * @param \Cortex\Taggable\Models\Tag                           $tag
+     * @param \Rinvex\Taggable\Contracts\TagContract                           $tag
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(TagFormRequest $request, Tag $tag)
+    public function update(TagFormRequest $request, TagContract $tag)
     {
         return $this->process($request, $tag);
     }
@@ -74,11 +74,11 @@ class TagsController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Cortex\Taggable\Models\Tag $tag
+     * @param \Rinvex\Taggable\Contracts\TagContract $tag
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete(Tag $tag)
+    public function delete(TagContract $tag)
     {
         $tag->delete();
 
@@ -91,11 +91,11 @@ class TagsController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Cortex\Taggable\Models\Tag $tag
+     * @param \Rinvex\Taggable\Contracts\TagContract $tag
      *
      * @return \Illuminate\Http\Response
      */
-    public function form(Tag $tag)
+    public function form(TagContract $tag)
     {
         $groups = app('rinvex.taggable.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
@@ -106,11 +106,11 @@ class TagsController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request    $request
-     * @param \Cortex\Taggable\Models\Tag $tag
+     * @param \Rinvex\Taggable\Contracts\TagContract $tag
      *
      * @return \Illuminate\Http\Response
      */
-    protected function process(Request $request, Tag $tag)
+    protected function process(Request $request, TagContract $tag)
     {
         // Prepare required input fields
         $data = $request->all();

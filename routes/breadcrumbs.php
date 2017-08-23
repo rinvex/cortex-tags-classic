@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cortex\Taggable\Models\Tag;
+use Rinvex\Taggable\Contracts\TagContract;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('backend.tags.index', function (BreadcrumbsGenerator $breadcrumbs) {
@@ -15,12 +15,12 @@ Breadcrumbs::register('backend.tags.create', function (BreadcrumbsGenerator $bre
     $breadcrumbs->push(trans('cortex/taggable::common.create_tag'), route('backend.tags.create'));
 });
 
-Breadcrumbs::register('backend.tags.edit', function (BreadcrumbsGenerator $breadcrumbs, Tag $tag) {
+Breadcrumbs::register('backend.tags.edit', function (BreadcrumbsGenerator $breadcrumbs, TagContract $tag) {
     $breadcrumbs->parent('backend.tags.index');
     $breadcrumbs->push($tag->name, route('backend.tags.edit', ['tag' => $tag]));
 });
 
-Breadcrumbs::register('backend.tags.logs', function (BreadcrumbsGenerator $breadcrumbs, Tag $tag) {
+Breadcrumbs::register('backend.tags.logs', function (BreadcrumbsGenerator $breadcrumbs, TagContract $tag) {
     $breadcrumbs->parent('backend.tags.index');
     $breadcrumbs->push($tag->name, route('backend.tags.edit', ['tag' => $tag]));
     $breadcrumbs->push(trans('cortex/taggable::common.logs'), route('backend.tags.logs', ['tag' => $tag]));

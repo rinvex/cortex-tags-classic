@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Providers;
 
-use Cortex\Taggable\Models\Tag;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Taggable\Console\Commands\SeedCommand;
 use Cortex\Taggable\Console\Commands\InstallCommand;
@@ -36,9 +35,6 @@ class TaggableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Bind eloquent models to IoC container
-        $this->app->alias('rinvex.taggable.tag', Tag::class);
-
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Policies;
 
-use Rinvex\Fort\Models\User;
-use Cortex\Taggable\Models\Tag;
+use Rinvex\Fort\Contracts\UserContract;
+use Rinvex\Taggable\Contracts\TagContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TagPolicy
@@ -16,11 +16,11 @@ class TagPolicy
      * Determine whether the user can list tags.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function list($ability, User $user)
+    public function list($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -29,11 +29,11 @@ class TagPolicy
      * Determine whether the user can create tags.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function create($ability, User $user)
+    public function create($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -42,12 +42,12 @@ class TagPolicy
      * Determine whether the user can update the tag.
      *
      * @param string                      $ability
-     * @param \Rinvex\Fort\Models\User    $user
-     * @param \Cortex\Taggable\Models\Tag $resource
+     * @param \Rinvex\Fort\Contracts\UserContract    $user
+     * @param \Rinvex\Taggable\Contracts\TagContract $resource
      *
      * @return bool
      */
-    public function update($ability, User $user, Tag $resource)
+    public function update($ability, UserContract $user, TagContract $resource)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can update tags
     }
@@ -56,12 +56,12 @@ class TagPolicy
      * Determine whether the user can delete the tag.
      *
      * @param string                      $ability
-     * @param \Rinvex\Fort\Models\User    $user
-     * @param \Cortex\Taggable\Models\Tag $resource
+     * @param \Rinvex\Fort\Contracts\UserContract    $user
+     * @param \Rinvex\Taggable\Contracts\TagContract $resource
      *
      * @return bool
      */
-    public function delete($ability, User $user, Tag $resource)
+    public function delete($ability, UserContract $user, TagContract $resource)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);   // User can delete tags
     }
