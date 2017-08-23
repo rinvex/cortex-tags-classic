@@ -15,7 +15,7 @@ class TagPolicy
     /**
      * Determine whether the user can list tags.
      *
-     * @param string                   $ability
+     * @param string                              $ability
      * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
@@ -28,7 +28,7 @@ class TagPolicy
     /**
      * Determine whether the user can create tags.
      *
-     * @param string                   $ability
+     * @param string                              $ability
      * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
@@ -41,7 +41,7 @@ class TagPolicy
     /**
      * Determine whether the user can update the tag.
      *
-     * @param string                      $ability
+     * @param string                                 $ability
      * @param \Rinvex\Fort\Contracts\UserContract    $user
      * @param \Rinvex\Taggable\Contracts\TagContract $resource
      *
@@ -55,7 +55,7 @@ class TagPolicy
     /**
      * Determine whether the user can delete the tag.
      *
-     * @param string                      $ability
+     * @param string                                 $ability
      * @param \Rinvex\Fort\Contracts\UserContract    $user
      * @param \Rinvex\Taggable\Contracts\TagContract $resource
      *

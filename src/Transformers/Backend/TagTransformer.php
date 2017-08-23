@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Transformers\Backend;
 
-use Rinvex\Taggable\Contracts\TagContract;
 use League\Fractal\TransformerAbstract;
+use Rinvex\Taggable\Contracts\TagContract;
 
 class TagTransformer extends TransformerAbstract
 {
