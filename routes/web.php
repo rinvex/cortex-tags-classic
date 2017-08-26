@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-use Rinvex\Taggable\Contracts\TagContract;
-
-Route::model('tag', TagContract::class);
-
 Route::group(['domain' => domain()], function () {
 
     Route::name('backend.')
