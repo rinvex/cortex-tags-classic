@@ -90,7 +90,7 @@ class TagsDataTable extends AbstractDataTable
     protected function getColumns()
     {
         return [
-            'name' => ['title' => trans('cortex/taggable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tags.edit\', {tag: full.id})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'name' => ['title' => trans('cortex/taggable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
             'slug' => ['title' => trans('cortex/taggable::common.slug')],
             'group' => ['title' => trans('cortex/taggable::common.group'), 'visible' => false],
             'created_at' => ['title' => trans('cortex/taggable::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
