@@ -48,7 +48,8 @@ class TaggableServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        // Bind models explicitly
+        // Bind route models and constrains
+        $router->pattern('tag', '[a-z0-9-]+');
         $router->model('tag', TagContract::class);
 
         // Load resources
