@@ -84,7 +84,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('backend.tags.index'),
-            'with' => ['warning' => trans('cortex/taggable::messages.tag.deleted', ['tagId' => $tag->id])],
+            'with' => ['warning' => trans('cortex/taggable::messages.tag.deleted', ['slug' => $tag->slug])],
         ]);
     }
 
@@ -120,7 +120,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('backend.tags.index'),
-            'with' => ['success' => trans('cortex/taggable::messages.tag.saved', ['tagId' => $tag->id])],
+            'with' => ['success' => trans('cortex/taggable::messages.tag.saved', ['slug' => $tag->slug])],
         ]);
     }
 }
