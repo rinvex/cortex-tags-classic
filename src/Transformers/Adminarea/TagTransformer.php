@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Transformers\Backend;
+namespace Cortex\Taggable\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
 use Rinvex\Taggable\Contracts\TagContract;

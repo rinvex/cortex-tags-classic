@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\DataTables\Backend;
+namespace Cortex\Taggable\DataTables\Adminarea;
 
 use Rinvex\Taggable\Contracts\TagContract;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Taggable\Transformers\Backend\TagTransformer;
+use Cortex\Taggable\Transformers\Adminarea\TagTransformer;
 
 class TagsDataTable extends AbstractDataTable
 {
@@ -89,7 +89,7 @@ class TagsDataTable extends AbstractDataTable
     protected function getColumns()
     {
         return [
-            'name' => ['title' => trans('cortex/taggable::common.name'), 'render' => '"<a href=\""+routes.route(\'backend.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'name' => ['title' => trans('cortex/taggable::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
             'slug' => ['title' => trans('cortex/taggable::common.slug')],
             'group' => ['title' => trans('cortex/taggable::common.group'), 'visible' => false],
             'created_at' => ['title' => trans('cortex/taggable::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],

@@ -1,13 +1,13 @@
 {{-- Master Layout --}}
-@extends('cortex/foundation::backend.layouts.default')
+@extends('cortex/foundation::adminarea.layouts.default')
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/taggable::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/taggable::common.create_tag') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/taggable::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/taggable::common.create_tag') }}
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Taggable\Http\Requests\Backend\TagFormRequest::class)->selector('#backend-tags-save') !!}
+    {!! JsValidator::formRequest(Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest::class)->selector('#adminarea-tags-save') !!}
 @endpush
 
 {{-- Main Content --}}
@@ -30,8 +30,8 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/taggable::common.details') }}</a></li>
-                    @if($tag->exists) <li><a href="{{ route('backend.tags.logs', ['tag' => $tag]) }}">{{ trans('cortex/taggable::common.logs') }}</a></li> @endif
-                    @if($tag->exists && $currentUser->can('delete-tags', $tag)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('backend.tags.delete', ['tag' => $tag]) }}" data-item-name="{{ $tag->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
+                    @if($tag->exists) <li><a href="{{ route('adminarea.tags.logs', ['tag' => $tag]) }}">{{ trans('cortex/taggable::common.logs') }}</a></li> @endif
+                    @if($tag->exists && $currentUser->can('delete-tags', $tag)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('adminarea.tags.delete', ['tag' => $tag]) }}" data-item-name="{{ $tag->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
 
                 <div class="tab-content">
@@ -39,9 +39,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tag->exists)
-                            {{ Form::model($tag, ['url' => route('backend.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => 'backend-tags-save']) }}
+                            {{ Form::model($tag, ['url' => route('adminarea.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => 'adminarea-tags-save']) }}
                         @else
-                            {{ Form::model($tag, ['url' => route('backend.tags.store'), 'id' => 'backend-tags-save']) }}
+                            {{ Form::model($tag, ['url' => route('adminarea.tags.store'), 'id' => 'adminarea-tags-save']) }}
                         @endif
 
                             <div class="row">
@@ -148,7 +148,7 @@
                                         {{ Form::button(trans('cortex/taggable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::backend.partials.timestamps', ['model' => $tag])
+                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $tag])
 
                                 </div>
 

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Http\Controllers\Backend;
+namespace Cortex\Taggable\Http\Controllers\Adminarea;
 
 use Illuminate\Http\Request;
 use Rinvex\Taggable\Contracts\TagContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Cortex\Taggable\DataTables\Backend\TagsDataTable;
-use Cortex\Taggable\Http\Requests\Backend\TagFormRequest;
+use Cortex\Taggable\DataTables\Adminarea\TagsDataTable;
+use Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
 class TagsController extends AuthorizedController
@@ -28,7 +28,7 @@ class TagsController extends AuthorizedController
         return app(TagsDataTable::class)->with([
             'id' => 'cortex-taggable-tags',
             'phrase' => trans('cortex/taggable::common.tags'),
-        ])->render('cortex/foundation::backend.pages.datatable');
+        ])->render('cortex/foundation::adminarea.pages.datatable');
     }
 
     /**
@@ -43,13 +43,13 @@ class TagsController extends AuthorizedController
             'resource' => $tag,
             'id' => 'cortex-taggable-tags-logs',
             'phrase' => trans('cortex/taggable::common.tags'),
-        ])->render('cortex/foundation::backend.pages.datatable-logs');
+        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Cortex\Taggable\Http\Requests\Backend\TagFormRequest $request
+     * @param \Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -61,7 +61,7 @@ class TagsController extends AuthorizedController
     /**
      * Update the given resource in storage.
      *
-     * @param \Cortex\Taggable\Http\Requests\Backend\TagFormRequest $request
+     * @param \Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest $request
      * @param \Rinvex\Taggable\Contracts\TagContract                $tag
      *
      * @return \Illuminate\Http\Response
@@ -83,7 +83,7 @@ class TagsController extends AuthorizedController
         $tag->delete();
 
         return intend([
-            'url' => route('backend.tags.index'),
+            'url' => route('adminarea.tags.index'),
             'with' => ['warning' => trans('cortex/taggable::messages.tag.deleted', ['slug' => $tag->slug])],
         ]);
     }
@@ -99,7 +99,7 @@ class TagsController extends AuthorizedController
     {
         $groups = app('rinvex.taggable.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
-        return view('cortex/taggable::backend.forms.tag', compact('tag', 'groups'));
+        return view('cortex/taggable::adminarea.forms.tag', compact('tag', 'groups'));
     }
 
     /**
@@ -119,7 +119,7 @@ class TagsController extends AuthorizedController
         $tag->fill($data)->save();
 
         return intend([
-            'url' => route('backend.tags.index'),
+            'url' => route('adminarea.tags.index'),
             'with' => ['success' => trans('cortex/taggable::messages.tag.saved', ['slug' => $tag->slug])],
         ]);
     }

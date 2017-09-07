@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Http\Requests\Backend;
+namespace Cortex\Taggable\Http\Requests\Adminarea;
 
 use Rinvex\Support\Http\Requests\FormRequest;
 
