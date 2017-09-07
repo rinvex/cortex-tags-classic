@@ -62,7 +62,7 @@ class TagsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest $request
-     * @param \Rinvex\Taggable\Contracts\TagContract                $tag
+     * @param \Rinvex\Taggable\Contracts\TagContract                  $tag
      *
      * @return \Illuminate\Http\Response
      */
