@@ -1,15 +1,15 @@
-# Cortex Taggable
+# Cortex Tags
 
-Cortex Taggable is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.
+**Cortex Tags** is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.
 
-[![Packagist](https://img.shields.io/packagist/v/cortex/taggable.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/taggable)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:taggable.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:taggable/)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/taggable.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/taggable/)
-[![Code Climate](https://img.shields.io/codeclimate/github/cortex/taggable.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/taggable)
-[![Travis](https://img.shields.io/travis/cortex/taggable.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/taggable)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/01bde275-513e-4b65-a721-4d618e33b70e.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/01bde275-513e-4b65-a721-4d618e33b70e)
-[![StyleCI](https://styleci.io/repos/90121903/shield)](https://styleci.io/repos/90121903)
-[![License](https://img.shields.io/packagist/l/cortex/taggable.svg?label=License&style=flat-square)](https://github.com/cortex/taggable/blob/develop/LICENSE)
+[![Packagist](https://img.shields.io/packagist/v/cortex/tags.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/tags)
+[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:tags.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:tags/)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/tags.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/tags/)
+[![Code Climate](https://img.shields.io/codeclimate/github/cortex/tags.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/tags)
+[![Travis](https://img.shields.io/travis/cortex/tags.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/tags)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/b13e9dbf-50de-49cd-a0f9-8de2e64a6ec8.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/b13e9dbf-50de-49cd-a0f9-8de2e64a6ec8)
+[![StyleCI](https://styleci.io/repos/93621990/shield)](https://styleci.io/repos/93621990)
+[![License](https://img.shields.io/packagist/l/cortex/tags.svg?label=License&style=flat-square)](https://github.com/cortex/tags/blob/develop/LICENSE)
 
 
 ## Installation and Usage

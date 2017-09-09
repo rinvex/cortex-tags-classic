@@ -1,0 +1,26 @@
+[
+    {
+        "action": "list",
+        "resource": "tags",
+        "policy": "Cortex\\Tags\\Policies\\TagPolicy@list",
+        "name": "Can List Existing Tags"
+    },
+    {
+        "action": "create",
+        "resource": "tags",
+        "policy": "Cortex\\Tags\\Policies\\TagPolicy@create",
+        "name": "Can Create New Tags"
+    },
+    {
+        "action": "update",
+        "resource": "tags",
+        "policy": "Cortex\\Tags\\Policies\\TagPolicy@update",
+        "name": "Can Update Existing Tags"
+    },
+    {
+        "action": "delete",
+        "resource": "tags",
+        "policy": "Cortex\\Tags\\Policies\\TagPolicy@delete",
+        "name": "Can Delete Existing Tags"
+    }
+]
