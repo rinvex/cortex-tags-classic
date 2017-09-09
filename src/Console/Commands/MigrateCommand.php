@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Console\Commands;
+namespace Cortex\Tags\Console\Commands;
 
 use Rinvex\Tags\Console\Commands\MigrateCommand as BaseMigrateCommand;
 
@@ -13,12 +13,12 @@ class MigrateCommand extends BaseMigrateCommand
      *
      * @var string
      */
-    protected $signature = 'cortex:migrate:taggable';
+    protected $signature = 'cortex:migrate:tags';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate Cortex Taggable Tables.';
+    protected $description = 'Migrate Cortex Tags Tables.';
 }

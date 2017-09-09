@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\DataTables\Adminarea;
+namespace Cortex\Tags\DataTables\Adminarea;
 
 use Rinvex\Tags\Contracts\TagContract;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Taggable\Transformers\Adminarea\TagTransformer;
+use Cortex\Tags\Transformers\Adminarea\TagTransformer;
 
 class TagsDataTable extends AbstractDataTable
 {
@@ -89,11 +89,11 @@ class TagsDataTable extends AbstractDataTable
     protected function getColumns()
     {
         return [
-            'name' => ['title' => trans('cortex/taggable::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
-            'slug' => ['title' => trans('cortex/taggable::common.slug')],
-            'group' => ['title' => trans('cortex/taggable::common.group'), 'visible' => false],
-            'created_at' => ['title' => trans('cortex/taggable::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
-            'updated_at' => ['title' => trans('cortex/taggable::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
+            'name' => ['title' => trans('cortex/tags::common.name'), 'render' => '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"', 'responsivePriority' => 0],
+            'slug' => ['title' => trans('cortex/tags::common.slug')],
+            'group' => ['title' => trans('cortex/tags::common.group'), 'visible' => false],
+            'created_at' => ['title' => trans('cortex/tags::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
+            'updated_at' => ['title' => trans('cortex/tags::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
         ];
     }
 }

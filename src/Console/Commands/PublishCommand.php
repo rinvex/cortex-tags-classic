@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Console\Commands;
+namespace Cortex\Tags\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:taggable';
+    protected $signature = 'cortex:publish:tags';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish Cortex Taggable Resources.';
+    protected $description = 'Publish Cortex Tags Resources.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,9 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Publish cortex/taggable:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-taggable-config']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-taggable-views']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-taggable-lang']);
+        $this->warn('Publish cortex/tags:');
+        $this->call('vendor:publish', ['--tag' => 'rinvex-tags-config']);
+        $this->call('vendor:publish', ['--tag' => 'cortex-tags-views']);
+        $this->call('vendor:publish', ['--tag' => 'cortex-tags-lang']);
     }
 }

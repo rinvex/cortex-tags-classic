@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Console\Commands;
+namespace Cortex\Tags\Console\Commands;
 
 use Illuminate\Console\Command;
 use Rinvex\Support\Traits\SeederHelper;
@@ -16,14 +16,14 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:seed:taggable';
+    protected $signature = 'cortex:seed:tags';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Seed Cortex Taggable Data.';
+    protected $description = 'Seed Cortex Tags Data.';
 
     /**
      * Execute the console command.
@@ -32,7 +32,7 @@ class SeedCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Seed cortex/taggable:');
+        $this->warn('Seed cortex/tags:');
 
         if ($this->ensureExistingDatabaseTables('rinvex/fort')) {
             $this->seedResources(app('rinvex.fort.ability'), realpath(__DIR__.'/../../../resources/data/abilities.json'), ['name', 'description', 'policy']);

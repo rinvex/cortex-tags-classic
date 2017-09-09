@@ -1,7 +1,7 @@
 {
-    "name": "cortex/taggable",
+    "name": "cortex/tags",
     "type": "cortex-module",
-    "description": "Cortex Taggable is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.",
+    "description": "Cortex Tags is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.",
     "keywords": [
         "tag",
         "model",
@@ -14,15 +14,16 @@
         "polymorphic",
         "sluggable",
         "sortable",
-        "rinvex"
+        "rinvex",
+        "tags"
     ],
     "license": "MIT",
     "homepage": "https://rinvex.com",
     "support": {
         "email": "help@rinvex.com",
-        "issues": "https://github.com/rinvex/cortex-taggable/issues",
-        "source": "https://github.com/rinvex/cortex-taggable",
-        "docs": "https://github.com/rinvex/cortex-taggable/README.md"
+        "issues": "https://github.com/rinvex/cortex-tags/issues",
+        "source": "https://github.com/rinvex/cortex-tags",
+        "docs": "https://github.com/rinvex/cortex-tags/README.md"
     },
     "authors": [
         {
@@ -38,7 +39,7 @@
         },
         {
             "name": "The Generous Laravel Community",
-            "homepage": "https://github.com/rinvex/cortex-taggable/contributors"
+            "homepage": "https://github.com/rinvex/cortex-tags/contributors"
         }
     ],
     "require": {
@@ -67,7 +68,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cortex\\Taggable\\": "src/"
+            "Cortex\\Tags\\": "src/"
         }
     },
     "config": {
@@ -81,7 +82,7 @@
         },
         "laravel": {
             "providers": [
-                "Cortex\\Taggable\\Providers\\TaggableServiceProvider"
+                "Cortex\\Tags\\Providers\\TagsServiceProvider"
             ]
         },
         "cortex-module": {

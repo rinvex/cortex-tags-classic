@@ -5,7 +5,7 @@ declare(strict_types=1);
 Route::group(['domain' => domain()], function () {
 
     Route::name('adminarea.')
-         ->namespace('Cortex\Taggable\Http\Controllers\Adminarea')
+         ->namespace('Cortex\Tags\Http\Controllers\Adminarea')
          ->middleware(['web', 'nohttpcache', 'can:access-dashboard'])
          ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/adminarea' : 'adminarea')->group(function () {
 

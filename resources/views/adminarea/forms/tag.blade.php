@@ -3,11 +3,11 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/taggable::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/taggable::common.create_tag') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tags::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/tags::common.create_tag') }}
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest::class)->selector('#adminarea-tags-save') !!}
+    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector('#adminarea-tags-save') !!}
 @endpush
 
 {{-- Main Content --}}
@@ -19,7 +19,7 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>{{ $tag->exists ? $tag->name : trans('cortex/taggable::common.create_tag') }}</h1>
+            <h1>{{ $tag->exists ? $tag->name : trans('cortex/tags::common.create_tag') }}</h1>
             <!-- Breadcrumbs -->
             {{ Breadcrumbs::render() }}
         </section>
@@ -29,8 +29,8 @@
 
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/taggable::common.details') }}</a></li>
-                    @if($tag->exists) <li><a href="{{ route('adminarea.tags.logs', ['tag' => $tag]) }}">{{ trans('cortex/taggable::common.logs') }}</a></li> @endif
+                    <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tags::common.details') }}</a></li>
+                    @if($tag->exists) <li><a href="{{ route('adminarea.tags.logs', ['tag' => $tag]) }}">{{ trans('cortex/tags::common.logs') }}</a></li> @endif
                     @if($tag->exists && $currentUser->can('delete-tags', $tag)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-item-href="{{ route('adminarea.tags.delete', ['tag' => $tag]) }}" data-item-name="{{ $tag->slug }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
 
@@ -53,8 +53,8 @@
 
                                             {{-- Name --}}
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                {{ Form::label('name', trans('cortex/taggable::common.name'), ['class' => 'control-label']) }}
-                                                {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/taggable::common.name'), 'data-slugify' => '#slug', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                                {{ Form::label('name', trans('cortex/tags::common.name'), ['class' => 'control-label']) }}
+                                                {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.name'), 'data-slugify' => '#slug', 'required' => 'required', 'autofocus' => 'autofocus']) }}
 
                                                 @if ($errors->has('name'))
                                                     <span class="help-block">{{ $errors->first('name') }}</span>
@@ -71,8 +71,8 @@
 
                                             {{-- Description --}}
                                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                                {{ Form::label('description', trans('cortex/taggable::common.description'), ['class' => 'control-label']) }}
-                                                {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('cortex/taggable::common.description'), 'rows' => 5]) }}
+                                                {{ Form::label('description', trans('cortex/tags::common.description'), ['class' => 'control-label']) }}
+                                                {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.description'), 'rows' => 5]) }}
 
                                                 @if ($errors->has('description'))
                                                     <span class="help-block">{{ $errors->first('description') }}</span>
@@ -91,8 +91,8 @@
 
                                             {{-- Slug --}}
                                             <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-                                                {{ Form::label('slug', trans('cortex/taggable::common.slug'), ['class' => 'control-label']) }}
-                                                {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/taggable::common.slug'), 'required' => 'required']) }}
+                                                {{ Form::label('slug', trans('cortex/tags::common.slug'), ['class' => 'control-label']) }}
+                                                {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.slug'), 'required' => 'required']) }}
 
                                                 @if ($errors->has('slug'))
                                                     <span class="help-block">{{ $errors->first('slug') }}</span>
@@ -108,9 +108,9 @@
 
                                             {{-- Group --}}
                                             <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
-                                                {{ Form::label('group', trans('cortex/taggable::common.group'), ['class' => 'control-label']) }}
+                                                {{ Form::label('group', trans('cortex/tags::common.group'), ['class' => 'control-label']) }}
                                                 {{ Form::hidden('group', '') }}
-                                                {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/taggable::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                                                {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tags::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                                 @if ($errors->has('group'))
                                                     <span class="help-block">{{ $errors->first('group') }}</span>
@@ -126,8 +126,8 @@
 
                                             {{-- Sort Order --}}
                                             <div class="form-group{{ $errors->has('sort_order') ? ' has-error' : '' }}">
-                                                {{ Form::label('sort_order', trans('cortex/taggable::common.sort_order'), ['class' => 'control-label']) }}
-                                                {{ Form::number('sort_order', null, ['class' => 'form-control', 'placeholder' => trans('cortex/taggable::common.sort_order'), 'required' => 'required']) }}
+                                                {{ Form::label('sort_order', trans('cortex/tags::common.sort_order'), ['class' => 'control-label']) }}
+                                                {{ Form::number('sort_order', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.sort_order'), 'required' => 'required']) }}
 
                                                 @if ($errors->has('sort_order'))
                                                     <span class="help-block">{{ $errors->first('sort_order') }}</span>
@@ -145,7 +145,7 @@
                                 <div class="col-md-12">
 
                                     <div class="pull-right">
-                                        {{ Form::button(trans('cortex/taggable::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
+                                        {{ Form::button(trans('cortex/tags::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
                                     @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $tag])

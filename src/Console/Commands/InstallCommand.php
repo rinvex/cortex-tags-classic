@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Console\Commands;
+namespace Cortex\Tags\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:install:taggable';
+    protected $signature = 'cortex:install:tags';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Cortex Taggable Module.';
+    protected $description = 'Install Cortex Tags Module.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,9 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Install cortex/taggable:');
-        $this->call('cortex:migrate:taggable');
-        $this->call('cortex:seed:taggable');
-        $this->call('cortex:publish:taggable');
+        $this->warn('Install cortex/tags:');
+        $this->call('cortex:migrate:tags');
+        $this->call('cortex:seed:tags');
+        $this->call('cortex:publish:tags');
     }
 }

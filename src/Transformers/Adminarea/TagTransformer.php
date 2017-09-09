@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Transformers\Adminarea;
+namespace Cortex\Tags\Transformers\Adminarea;
 
 use League\Fractal\TransformerAbstract;
-use Rinvex\Taggable\Contracts\TagContract;
+use Rinvex\Tags\Contracts\TagContract;
 
 class TagTransformer extends TransformerAbstract
 {

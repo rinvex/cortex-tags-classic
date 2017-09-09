@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Taggable\Policies;
+namespace Cortex\Tags\Policies;
 
 use Rinvex\Fort\Contracts\UserContract;
 use Rinvex\Tags\Contracts\TagContract;
@@ -43,7 +43,7 @@ class TagPolicy
      *
      * @param string                                 $ability
      * @param \Rinvex\Fort\Contracts\UserContract    $user
-     * @param \Rinvex\Taggable\Contracts\TagContract $resource
+     * @param \Rinvex\Tags\Contracts\TagContract $resource
      *
      * @return bool
      */
@@ -57,7 +57,7 @@ class TagPolicy
      *
      * @param string                                 $ability
      * @param \Rinvex\Fort\Contracts\UserContract    $user
-     * @param \Rinvex\Taggable\Contracts\TagContract $resource
+     * @param \Rinvex\Tags\Contracts\TagContract $resource
      *
      * @return bool
      */

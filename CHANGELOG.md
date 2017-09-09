@@ -1,4 +1,4 @@
-# Cortex Taggable Change Log
+# Cortex Tags Change Log
 
 All notable changes to this project will be documented in this file.
 
