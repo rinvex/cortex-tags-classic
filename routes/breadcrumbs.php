@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rinvex\Taggable\Contracts\TagContract;
+use Rinvex\Tags\Contracts\TagContract;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('adminarea.tags.index', function (BreadcrumbsGenerator $breadcrumbs) {

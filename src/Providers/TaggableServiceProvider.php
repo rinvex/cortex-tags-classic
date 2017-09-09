@@ -6,11 +6,11 @@ namespace Cortex\Taggable\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Taggable\Contracts\TagContract;
 use Cortex\Taggable\Console\Commands\SeedCommand;
 use Cortex\Taggable\Console\Commands\InstallCommand;
 use Cortex\Taggable\Console\Commands\MigrateCommand;
 use Cortex\Taggable\Console\Commands\PublishCommand;
+use Rinvex\Tags\Contracts\TagContract;
 
 class TaggableServiceProvider extends ServiceProvider
 {

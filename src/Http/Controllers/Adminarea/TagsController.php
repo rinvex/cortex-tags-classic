@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Taggable\Http\Controllers\Adminarea;
 
 use Illuminate\Http\Request;
-use Rinvex\Taggable\Contracts\TagContract;
+use Rinvex\Tags\Contracts\TagContract;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Taggable\DataTables\Adminarea\TagsDataTable;
 use Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest;
@@ -62,7 +62,7 @@ class TagsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Taggable\Http\Requests\Adminarea\TagFormRequest $request
-     * @param \Rinvex\Taggable\Contracts\TagContract                  $tag
+     * @param \Rinvex\Tags\Contracts\TagContract                  $tag
      *
      * @return \Illuminate\Http\Response
      */
@@ -74,7 +74,7 @@ class TagsController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Taggable\Contracts\TagContract $tag
+     * @param \Rinvex\Tags\Contracts\TagContract $tag
      *
      * @return \Illuminate\Http\Response
      */
@@ -91,7 +91,7 @@ class TagsController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Rinvex\Taggable\Contracts\TagContract $tag
+     * @param \Rinvex\Tags\Contracts\TagContract $tag
      *
      * @return \Illuminate\Http\Response
      */
@@ -106,7 +106,7 @@ class TagsController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request               $request
-     * @param \Rinvex\Taggable\Contracts\TagContract $tag
+     * @param \Rinvex\Tags\Contracts\TagContract $tag
      *
      * @return \Illuminate\Http\Response
      */

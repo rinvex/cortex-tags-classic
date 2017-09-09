@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Console\Commands;
 
-use Rinvex\Taggable\Console\Commands\MigrateCommand as BaseMigrateCommand;
+use Rinvex\Tags\Console\Commands\MigrateCommand as BaseMigrateCommand;
 
 class MigrateCommand extends BaseMigrateCommand
 {

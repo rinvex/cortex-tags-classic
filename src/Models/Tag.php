@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\Models;
 
-use Rinvex\Taggable\Models\Tag as BaseTag;
+use Rinvex\Tags\Models\Tag as BaseTag;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**

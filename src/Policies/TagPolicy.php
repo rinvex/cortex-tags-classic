@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Taggable\Policies;
 
 use Rinvex\Fort\Contracts\UserContract;
-use Rinvex\Taggable\Contracts\TagContract;
+use Rinvex\Tags\Contracts\TagContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TagPolicy

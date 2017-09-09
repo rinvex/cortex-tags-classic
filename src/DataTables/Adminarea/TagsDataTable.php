@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Taggable\DataTables\Adminarea;
 
-use Rinvex\Taggable\Contracts\TagContract;
+use Rinvex\Tags\Contracts\TagContract;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Taggable\Transformers\Adminarea\TagTransformer;
 
