@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Policies;
 
-use Rinvex\Fort\Contracts\UserContract;
 use Rinvex\Tags\Contracts\TagContract;
+use Rinvex\Fort\Contracts\UserContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TagPolicy
@@ -41,9 +41,9 @@ class TagPolicy
     /**
      * Determine whether the user can update the tag.
      *
-     * @param string                                 $ability
-     * @param \Rinvex\Fort\Contracts\UserContract    $user
-     * @param \Rinvex\Tags\Contracts\TagContract $resource
+     * @param string                              $ability
+     * @param \Rinvex\Fort\Contracts\UserContract $user
+     * @param \Rinvex\Tags\Contracts\TagContract  $resource
      *
      * @return bool
      */
@@ -55,9 +55,9 @@ class TagPolicy
     /**
      * Determine whether the user can delete the tag.
      *
-     * @param string                                 $ability
-     * @param \Rinvex\Fort\Contracts\UserContract    $user
-     * @param \Rinvex\Tags\Contracts\TagContract $resource
+     * @param string                              $ability
+     * @param \Rinvex\Fort\Contracts\UserContract $user
+     * @param \Rinvex\Tags\Contracts\TagContract  $resource
      *
      * @return bool
      */

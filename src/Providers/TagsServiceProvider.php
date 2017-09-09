@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Tags\Providers;
 
 use Illuminate\Routing\Router;
-use Illuminate\Support\ServiceProvider;
 use Rinvex\Tags\Contracts\TagContract;
+use Illuminate\Support\ServiceProvider;
 use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
 use Cortex\Tags\Console\Commands\MigrateCommand;
