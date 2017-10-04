@@ -78,14 +78,4 @@ class Tag extends BaseTag
     {
         return 'slug';
     }
-
-    /**
-     * Get the class name for polymorphic relations.
-     *
-     * @return string
-     */
-    public function getMorphClass()
-    {
-        return 'tag';
-    }
 }

@@ -11,6 +11,7 @@ use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
 use Cortex\Tags\Console\Commands\MigrateCommand;
 use Cortex\Tags\Console\Commands\PublishCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
 {
@@ -51,6 +52,11 @@ class TagsServiceProvider extends ServiceProvider
         // Bind route models and constrains
         $router->pattern('tag', '[a-z0-9-]+');
         $router->model('tag', TagContract::class);
+
+        // Map relations
+        Relation::morphMap([
+            'tag' => config('rinvex.tags.models.tag'),
+        ]);
 
         // Load resources
         require __DIR__.'/../../routes/breadcrumbs.php';
