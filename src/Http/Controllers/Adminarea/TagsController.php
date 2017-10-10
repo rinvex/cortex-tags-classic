@@ -39,6 +39,7 @@ class TagsController extends AuthorizedController
     public function logs(TagContract $tag)
     {
         return app(LogsDataTable::class)->with([
+            'tab' => 'logs',
             'type' => 'tags',
             'resource' => $tag,
             'id' => 'cortex-tags-tags-logs',
