@@ -44,7 +44,7 @@ class TagsController extends AuthorizedController
             'resource' => $tag,
             'id' => 'cortex-tags-tags-logs',
             'phrase' => trans('cortex/tags::common.tags'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
+        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
     /**
