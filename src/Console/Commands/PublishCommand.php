@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Console\Commands;
 
-use Illuminate\Console\Command;
+use Rinvex\Tags\Console\Commands\PublishCommand as BasePublishCommand;
 
-class PublishCommand extends Command
+class PublishCommand extends BasePublishCommand
 {
     /**
      * The name and signature of the console command.
@@ -29,8 +29,8 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Publish cortex/tags:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-tags-config', '--force' => $this->option('force')]);
+        parent::handle();
+
         $this->call('vendor:publish', ['--tag' => 'cortex-tags-views', '--force' => $this->option('force')]);
         $this->call('vendor:publish', ['--tag' => 'cortex-tags-lang', '--force' => $this->option('force')]);
     }
