@@ -39,6 +39,31 @@ class Tag extends BaseTag
     use LogsActivity;
 
     /**
+     * {@inheritdoc}
+     */
+    protected $fillable = [
+        'slug',
+        'name',
+        'description',
+        'sort_order',
+        'group',
+        'color',
+        'icon',
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'slug' => 'string',
+        'sort_order' => 'integer',
+        'group' => 'string',
+        'color' => 'string',
+        'icon' => 'string',
+        'deleted_at' => 'datetime',
+    ];
+
+    /**
      * Indicates whether to log only dirty attributes or all.
      *
      * @var bool
@@ -56,6 +81,8 @@ class Tag extends BaseTag
         'description',
         'sort_order',
         'group',
+        'color',
+        'icon',
     ];
 
     /**
@@ -68,6 +95,27 @@ class Tag extends BaseTag
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Create a new Eloquent model instance.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('rinvex.tags.tables.tags'));
+        $this->setRules([
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',slug',
+            'name' => 'required|string|max:150',
+            'description' => 'nullable|string|max:10000',
+            'sort_order' => 'nullable|integer|max:10000000',
+            'group' => 'nullable|string|max:150',
+            'color' => 'nullable|string|max:7',
+            'icon' => 'nullable|string|max:150',
+        ]);
+    }
 
     /**
      * Get the route key for the model.

@@ -85,6 +85,7 @@
                                 </div>
 
                                 <div class="col-md-4">
+
                                     <div class="row">
 
                                         <div class="col-md-12">
@@ -102,6 +103,50 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+
+                                            {{-- Color --}}
+                                            <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
+                                                {{ Form::label('color', trans('cortex/tags::common.color'), ['class' => 'control-label']) }}
+
+                                                <div class="input-group color-picker">
+                                                    {{ Form::text('color', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.color'), 'readonly' => 'readonly']) }}
+
+                                                    <div class="input-group-addon">
+                                                        <i></i>
+                                                    </div>
+                                                </div>
+
+                                                @if ($errors->has('color'))
+                                                    <span class="help-block">{{ $errors->first('color') }}</span>
+                                                @endif
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+
+                                            {{-- Icon --}}
+                                            <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
+                                                {{ Form::label('icon', trans('cortex/tags::common.icon'), ['class' => 'control-label']) }}
+                                                {{ Form::text('icon', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.icon'), 'required' => 'required']) }}
+
+                                                @if ($errors->has('icon'))
+                                                    <span class="help-block">{{ $errors->first('icon') }}</span>
+                                                @endif
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
                                     <div class="row">
 
                                         <div class="col-md-12">
@@ -120,6 +165,7 @@
                                         </div>
 
                                     </div>
+
                                     <div class="row">
 
                                         <div class="col-md-12">
@@ -127,7 +173,7 @@
                                             {{-- Sort Order --}}
                                             <div class="form-group{{ $errors->has('sort_order') ? ' has-error' : '' }}">
                                                 {{ Form::label('sort_order', trans('cortex/tags::common.sort_order'), ['class' => 'control-label']) }}
-                                                {{ Form::number('sort_order', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.sort_order'), 'required' => 'required']) }}
+                                                {{ Form::number('sort_order', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.sort_order')]) }}
 
                                                 @if ($errors->has('sort_order'))
                                                     <span class="help-block">{{ $errors->first('sort_order') }}</span>
