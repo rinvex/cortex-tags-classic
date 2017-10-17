@@ -108,20 +108,13 @@
 
                                         <div class="col-md-12">
 
-                                            {{-- Color --}}
-                                            <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
-                                                {{ Form::label('color', trans('cortex/tags::common.color'), ['class' => 'control-label']) }}
+                                            {{-- Style --}}
+                                            <div class="form-group{{ $errors->has('style') ? ' has-error' : '' }}">
+                                                {{ Form::label('style', trans('cortex/tags::common.style'), ['class' => 'control-label']) }}
+                                                {{ Form::text('style', null, ['class' => 'form-control style-picker', 'placeholder' => trans('cortex/tags::common.style'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
 
-                                                <div class="input-group color-picker">
-                                                    {{ Form::text('color', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.color'), 'readonly' => 'readonly']) }}
-
-                                                    <div class="input-group-addon">
-                                                        <i></i>
-                                                    </div>
-                                                </div>
-
-                                                @if ($errors->has('color'))
-                                                    <span class="help-block">{{ $errors->first('color') }}</span>
+                                                @if ($errors->has('style'))
+                                                    <span class="help-block">{{ $errors->first('style') }}</span>
                                                 @endif
                                             </div>
 
@@ -136,7 +129,15 @@
                                             {{-- Icon --}}
                                             <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
                                                 {{ Form::label('icon', trans('cortex/tags::common.icon'), ['class' => 'control-label']) }}
-                                                {{ Form::text('icon', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.icon'), 'required' => 'required']) }}
+
+                                                <div class="input-group">
+                                                    {{ Form::text('icon', null, ['class' => 'form-control icon-picker', 'placeholder' => trans('cortex/tags::common.icon'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
+
+                                                    <div class="input-group-addon">
+                                                        <i style="width: 18px !important;"></i>
+                                                    </div>
+                                                </div>
+
 
                                                 @if ($errors->has('icon'))
                                                     <span class="help-block">{{ $errors->first('icon') }}</span>

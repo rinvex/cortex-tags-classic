@@ -47,7 +47,7 @@ class Tag extends BaseTag
         'description',
         'sort_order',
         'group',
-        'color',
+        'style',
         'icon',
     ];
 
@@ -58,7 +58,7 @@ class Tag extends BaseTag
         'slug' => 'string',
         'sort_order' => 'integer',
         'group' => 'string',
-        'color' => 'string',
+        'style' => 'string',
         'icon' => 'string',
         'deleted_at' => 'datetime',
     ];
@@ -81,7 +81,7 @@ class Tag extends BaseTag
         'description',
         'sort_order',
         'group',
-        'color',
+        'style',
         'icon',
     ];
 
@@ -112,7 +112,7 @@ class Tag extends BaseTag
             'description' => 'nullable|string|max:10000',
             'sort_order' => 'nullable|integer|max:10000000',
             'group' => 'nullable|string|max:150',
-            'color' => 'nullable|string|max:7',
+            'style' => 'nullable|string|max:150',
             'icon' => 'nullable|string|max:150',
         ]);
     }
