@@ -16,9 +16,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property array                                                                         $description
  * @property int                                                                           $sort_order
  * @property string                                                                        $group
- * @property \Carbon\Carbon                                                                $created_at
- * @property \Carbon\Carbon                                                                $updated_at
- * @property \Carbon\Carbon                                                                $deleted_at
+ * @property \Carbon\Carbon|null                                                           $created_at
+ * @property \Carbon\Carbon|null                                                           $updated_at
+ * @property \Carbon\Carbon|null                                                           $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag ordered($direction = 'asc')
@@ -31,7 +31,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSortOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag withGroup($group = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag withGroup($group)
  * @mixin \Eloquent
  */
 class Tag extends BaseTag
