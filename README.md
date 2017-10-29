@@ -3,7 +3,6 @@
 **Cortex Tags** is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/tags.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/tags)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:tags.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:tags/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/tags.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/tags/)
 [![Code Climate](https://img.shields.io/codeclimate/github/cortex/tags.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/tags)
 [![Travis](https://img.shields.io/travis/cortex/tags.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/tags)
