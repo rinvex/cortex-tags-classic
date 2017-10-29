@@ -29,7 +29,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Install cortex/tags:');
+        $this->warn($this->description);
         $this->call('cortex:migrate:tags');
         $this->call('cortex:seed:tags');
         $this->call('cortex:publish:tags');
