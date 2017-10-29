@@ -16,6 +16,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property array                                                                         $description
  * @property int                                                                           $sort_order
  * @property string                                                                        $group
+ * @property string                                                                        $style
+ * @property string                                                                        $icon
  * @property \Carbon\Carbon|null                                                           $created_at
  * @property \Carbon\Carbon|null                                                           $updated_at
  * @property \Carbon\Carbon|null                                                           $deleted_at
@@ -26,10 +28,12 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereGroup($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSortOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereStyle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag withGroup($group)
  * @mixin \Eloquent
