@@ -21,11 +21,13 @@ class TagsController extends AuthorizedController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Tags\DataTables\Adminarea\TagsDataTable $tagsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(TagsDataTable $tagsDataTable)
     {
-        return app(TagsDataTable::class)->with([
+        return $tagsDataTable->with([
             'id' => 'cortex-tags-tags',
             'phrase' => trans('cortex/tags::common.tags'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
@@ -34,11 +36,14 @@ class TagsController extends AuthorizedController
     /**
      * Display a listing of the resource logs.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Rinvex\Tags\Contracts\TagContract          $tag
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function logs(TagContract $tag)
+    public function logs(TagContract $tag, LogsDataTable $logsDataTable)
     {
-        return app(LogsDataTable::class)->with([
+        return $logsDataTable->with([
             'tab' => 'logs',
             'type' => 'tags',
             'resource' => $tag,
