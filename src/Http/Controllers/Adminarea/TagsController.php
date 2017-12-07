@@ -105,7 +105,7 @@ class TagsController extends AuthorizedController
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
-        return view('cortex/tags::adminarea.forms.tag', compact('tag', 'groups'));
+        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups'));
     }
 
     /**
