@@ -28,7 +28,7 @@ class TagsController extends AuthorizedController
     public function index(TagsDataTable $tagsDataTable)
     {
         return $tagsDataTable->with([
-            'id' => 'cortex-tags-tags',
+            'id' => 'cortex-tags',
             'phrase' => trans('cortex/tags::common.tags'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
@@ -47,7 +47,7 @@ class TagsController extends AuthorizedController
             'tab' => 'logs',
             'type' => 'tags',
             'resource' => $tag,
-            'id' => 'cortex-tags-tags-logs',
+            'id' => 'cortex-tags-logs',
             'phrase' => trans('cortex/tags::common.tags'),
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
