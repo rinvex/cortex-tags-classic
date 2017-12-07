@@ -11,6 +11,7 @@ use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
 use Cortex\Tags\Console\Commands\MigrateCommand;
 use Cortex\Tags\Console\Commands\PublishCommand;
+use Cortex\Tags\Console\Commands\RollbackCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
@@ -21,10 +22,11 @@ class TagsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.tags.seed',
+        InstallCommand::class => 'command.cortex.tags.install',
         MigrateCommand::class => 'command.cortex.tags.migrate',
         PublishCommand::class => 'command.cortex.tags.publish',
-        InstallCommand::class => 'command.cortex.tags.install',
-        SeedCommand::class => 'command.cortex.tags.seed',
+        RollbackCommand::class => 'command.cortex.tags.rollback',
     ];
 
     /**
