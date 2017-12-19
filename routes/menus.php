@@ -6,7 +6,7 @@ use Rinvex\Menus\Models\MenuItem;
 use Rinvex\Menus\Factories\MenuFactory;
 
 Menu::modify('adminarea.sidebar', function(MenuFactory $menu) {
-    $menu->findBy('title', trans('cortex/foundation::common.taxonomy'), function (MenuItem $dropdown) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', [], function (MenuItem $dropdown) {
         $dropdown->route(['adminarea.tags.index'], trans('cortex/tags::common.tags'), 20, 'fa fa-tags')->can('list-tags');
     });
 });
