@@ -47,6 +47,7 @@ class TagsController extends AuthorizedController
             'tab' => 'logs',
             'type' => 'tags',
             'resource' => $tag,
+            'title' => $tag->name,
             'id' => 'cortex-tags-logs',
             'phrase' => trans('cortex/tags::common.tags'),
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
