@@ -65,6 +65,7 @@ class TagsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tags');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tags');
+        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus.php';
         });
@@ -80,6 +81,7 @@ class TagsServiceProvider extends ServiceProvider
      */
     protected function publishResources()
     {
+        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-tags-migrations');
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tags')], 'cortex-tags-lang');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tags')], 'cortex-tags-views');
     }
