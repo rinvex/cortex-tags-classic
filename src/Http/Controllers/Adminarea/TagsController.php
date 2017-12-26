@@ -34,23 +34,17 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Display a listing of the resource logs.
+     * Get a listing of the resource logs.
      *
-     * @param \Rinvex\Tags\Contracts\TagContract          $tag
-     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
+     * @param \Rinvex\Tags\Contracts\TagContract $tag
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function logs(TagContract $tag, LogsDataTable $logsDataTable)
+    public function logs(TagContract $tag)
     {
-        return $logsDataTable->with([
-            'tab' => 'logs',
-            'type' => 'tags',
-            'resource' => $tag,
-            'title' => $tag->name,
-            'id' => 'cortex-tags-logs',
-            'phrase' => trans('cortex/tags::common.tags'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+        return request()->ajax() && request()->wantsJson()
+            ? app(LogsDataTable::class)->with(['resource' => $tag])->ajax()
+            : intend(['url' => route('adminarea.tags.edit', ['tag' => $tag]).'#logs-tab']);
     }
 
     /**
@@ -105,8 +99,9 @@ class TagsController extends AuthorizedController
     public function form(TagContract $tag)
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
+        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
 
-        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups'));
+        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups', 'logs'));
     }
 
     /**
