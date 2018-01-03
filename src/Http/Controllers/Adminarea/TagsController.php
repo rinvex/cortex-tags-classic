@@ -98,7 +98,7 @@ class TagsController extends AuthorizedController
     protected function process(Request $request, TagContract $tag)
     {
         // Prepare required input fields
-        $data = $request->all();
+        $data = $request->validated();
 
         // Save tag
         $tag->fill($data)->save();
