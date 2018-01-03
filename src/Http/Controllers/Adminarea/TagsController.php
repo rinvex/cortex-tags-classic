@@ -48,6 +48,21 @@ class TagsController extends AuthorizedController
     }
 
     /**
+     * Show the form for create/update of the given resource.
+     *
+     * @param \Rinvex\Tags\Contracts\TagContract $tag
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function form(TagContract $tag)
+    {
+        $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
+        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
+
+        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups', 'logs'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
@@ -73,38 +88,6 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
-     *
-     * @param \Rinvex\Tags\Contracts\TagContract $tag
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(TagContract $tag)
-    {
-        $tag->delete();
-
-        return intend([
-            'url' => route('adminarea.tags.index'),
-            'with' => ['warning' => trans('cortex/tags::messages.tag.deleted', ['slug' => $tag->slug])],
-        ]);
-    }
-
-    /**
-     * Show the form for create/update of the given resource.
-     *
-     * @param \Rinvex\Tags\Contracts\TagContract $tag
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function form(TagContract $tag)
-    {
-        $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
-        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
-
-        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups', 'logs'));
-    }
-
-    /**
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request           $request
@@ -123,6 +106,23 @@ class TagsController extends AuthorizedController
         return intend([
             'url' => route('adminarea.tags.index'),
             'with' => ['success' => trans('cortex/tags::messages.tag.saved', ['slug' => $tag->slug])],
+        ]);
+    }
+
+    /**
+     * Delete the given resource from storage.
+     *
+     * @param \Rinvex\Tags\Contracts\TagContract $tag
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(TagContract $tag)
+    {
+        $tag->delete();
+
+        return intend([
+            'url' => route('adminarea.tags.index'),
+            'with' => ['warning' => trans('cortex/tags::messages.tag.deleted', ['slug' => $tag->slug])],
         ]);
     }
 }
