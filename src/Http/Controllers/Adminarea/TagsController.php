@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Http\Controllers\Adminarea;
 
-use Illuminate\Http\Request;
 use Rinvex\Tags\Contracts\TagContract;
+use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;
 use Cortex\Tags\Http\Requests\Adminarea\TagFormRequest;
@@ -90,12 +90,12 @@ class TagsController extends AuthorizedController
     /**
      * Process the form for store/update of the given resource.
      *
-     * @param \Illuminate\Http\Request           $request
-     * @param \Rinvex\Tags\Contracts\TagContract $tag
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Rinvex\Tags\Contracts\TagContract      $tag
      *
      * @return \Illuminate\Http\Response
      */
-    protected function process(Request $request, TagContract $tag)
+    protected function process(FormRequest $request, TagContract $tag)
     {
         // Prepare required input fields
         $data = $request->validated();
