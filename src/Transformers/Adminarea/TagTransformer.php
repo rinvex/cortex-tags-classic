@@ -15,7 +15,7 @@ class TagTransformer extends TransformerAbstract
     public function transform(TagContract $tag)
     {
         return [
-            'id' => (int) $tag->id,
+            'id' => (int) $tag->getKey(),
             'name' => (string) $tag->name,
             'slug' => (string) $tag->slug,
             'group' => (string) $tag->group,
