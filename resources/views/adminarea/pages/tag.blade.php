@@ -7,7 +7,7 @@
 @stop
 
 @push('scripts')
-    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector('#adminarea-tags-save') !!}
+    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector("#adminarea-tags-create-form, #adminarea-tags-{$tag->getKey()}-update-form") !!}
 @endpush
 
 {{-- Main Content --}}
@@ -37,9 +37,9 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tag->exists)
-                            {{ Form::model($tag, ['url' => route('adminarea.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => 'adminarea-tags-save']) }}
+                            {{ Form::model($tag, ['url' => route('adminarea.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => "adminarea-tags-{$tag->getKey()}-update-form"]) }}
                         @else
-                            {{ Form::model($tag, ['url' => route('adminarea.tags.store'), 'id' => 'adminarea-tags-save']) }}
+                            {{ Form::model($tag, ['url' => route('adminarea.tags.store'), 'id' => 'adminarea-tags-create-form']) }}
                         @endif
 
                             <div class="row">
@@ -206,7 +206,7 @@
                     @if($tag->exists)
 
                         <div class="tab-pane" id="logs-tab">
-                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => 'logs-table']) !!}
+                            {!! $logs->table(['class' => 'table table-striped table-hover responsive dataTableBuilder', 'id' => "adminarea-tags-{$tag->getKey()}-logs-table"]) !!}
                         </div>
 
                     @endif

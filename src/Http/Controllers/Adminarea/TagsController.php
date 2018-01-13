@@ -28,7 +28,7 @@ class TagsController extends AuthorizedController
     public function index(TagsDataTable $tagsDataTable)
     {
         return $tagsDataTable->with([
-            'id' => 'cortex-tags',
+            'id' => 'adminarea-tags-index-table',
             'phrase' => trans('cortex/tags::common.tags'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
@@ -57,7 +57,7 @@ class TagsController extends AuthorizedController
     public function form(TagContract $tag)
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
-        $logs = app(LogsDataTable::class)->with(['id' => 'logs-table'])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
+        $logs = app(LogsDataTable::class)->with(['id' => "adminarea-tags-{$tag->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
 
         return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups', 'logs'));
     }
