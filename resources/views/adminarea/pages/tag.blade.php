@@ -6,7 +6,7 @@
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tags::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/tags::common.create_tag') }}
 @stop
 
-@push('scripts')
+@push('inline-scripts')
     {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector("#adminarea-tags-create-form, #adminarea-tags-{$tag->getKey()}-update-form") !!}
 @endpush
 
@@ -227,11 +227,11 @@
         <link href="{{ mix('css/datatables.css', 'assets') }}" rel="stylesheet">
     @endpush
 
-    @push('scripts-vendor')
+    @push('vendor-scripts')
         <script src="{{ mix('js/datatables.js', 'assets') }}" type="text/javascript"></script>
     @endpush
 
-    @push('scripts')
+    @push('inline-scripts')
         {!! $logs->scripts() !!}
     @endpush
 
