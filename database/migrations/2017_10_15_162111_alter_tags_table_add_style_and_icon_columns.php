@@ -13,7 +13,7 @@ class AlterTagsTableAddStyleAndIconColumns extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table(config('rinvex.tags.tables.tags'), function (Blueprint $table) {
             $table->string('style')->after('group')->nullable();
@@ -26,7 +26,7 @@ class AlterTagsTableAddStyleAndIconColumns extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table(config('rinvex.tags.tables.tags'), function (Blueprint $table) {
             $table->dropColumn('icon');
