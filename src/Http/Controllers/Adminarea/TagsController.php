@@ -38,7 +38,7 @@ class TagsController extends AuthorizedController
      *
      * @param \Rinvex\Tags\Contracts\TagContract $tag
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function logs(TagContract $tag)
     {
@@ -52,7 +52,7 @@ class TagsController extends AuthorizedController
      *
      * @param \Rinvex\Tags\Contracts\TagContract $tag
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function form(TagContract $tag)
     {
@@ -67,7 +67,7 @@ class TagsController extends AuthorizedController
      *
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(TagFormRequest $request)
     {
@@ -80,7 +80,7 @@ class TagsController extends AuthorizedController
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
      * @param \Rinvex\Tags\Contracts\TagContract                  $tag
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function update(TagFormRequest $request, TagContract $tag)
     {
@@ -93,7 +93,7 @@ class TagsController extends AuthorizedController
      * @param \Illuminate\Foundation\Http\FormRequest $request
      * @param \Rinvex\Tags\Contracts\TagContract      $tag
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     protected function process(FormRequest $request, TagContract $tag)
     {
