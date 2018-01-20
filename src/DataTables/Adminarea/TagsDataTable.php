@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\DataTables\Adminarea;
 
-use Rinvex\Tags\Contracts\TagContract;
+use Rinvex\Tags\Models\Tag;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Tags\Transformers\Adminarea\TagTransformer;
 
@@ -13,7 +13,7 @@ class TagsDataTable extends AbstractDataTable
     /**
      * {@inheritdoc}
      */
-    protected $model = TagContract::class;
+    protected $model = Tag::class;
 
     /**
      * {@inheritdoc}

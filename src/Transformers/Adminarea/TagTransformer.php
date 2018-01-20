@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Transformers\Adminarea;
 
-use Rinvex\Tags\Contracts\TagContract;
+use Rinvex\Tags\Models\Tag;
 use League\Fractal\TransformerAbstract;
 
 class TagTransformer extends TransformerAbstract
@@ -12,7 +12,7 @@ class TagTransformer extends TransformerAbstract
     /**
      * @return array
      */
-    public function transform(TagContract $tag): array
+    public function transform(Tag $tag): array
     {
         return [
             'id' => (int) $tag->getKey(),

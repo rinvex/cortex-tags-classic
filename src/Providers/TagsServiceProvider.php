@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tags\Providers;
 
 use Illuminate\Routing\Router;
-use Rinvex\Tags\Contracts\TagContract;
+use Rinvex\Tags\Models\Tag;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
@@ -53,7 +53,7 @@ class TagsServiceProvider extends ServiceProvider
     {
         // Bind route models and constrains
         $router->pattern('tag', '[a-z0-9-]+');
-        $router->model('tag', TagContract::class);
+        $router->model('tag', Tag::class);
 
         // Map relations
         Relation::morphMap([

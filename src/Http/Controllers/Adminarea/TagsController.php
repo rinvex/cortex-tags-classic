@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Http\Controllers\Adminarea;
 
-use Rinvex\Tags\Contracts\TagContract;
+use Rinvex\Tags\Models\Tag;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;
@@ -36,11 +36,11 @@ class TagsController extends AuthorizedController
     /**
      * Get a listing of the resource logs.
      *
-     * @param \Rinvex\Tags\Contracts\TagContract $tag
+     * @param \Rinvex\Tags\Models\Tag $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(TagContract $tag)
+    public function logs(Tag $tag)
     {
         return request()->ajax() && request()->wantsJson()
             ? app(LogsDataTable::class)->with(['resource' => $tag])->ajax()
@@ -50,11 +50,11 @@ class TagsController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @param \Rinvex\Tags\Contracts\TagContract $tag
+     * @param \Rinvex\Tags\Models\Tag $tag
      *
      * @return \Illuminate\View\View
      */
-    public function form(TagContract $tag)
+    public function form(Tag $tag)
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
         $logs = app(LogsDataTable::class)->with(['id' => "adminarea-tags-{$tag->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
@@ -78,11 +78,11 @@ class TagsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
-     * @param \Rinvex\Tags\Contracts\TagContract                  $tag
+     * @param \Rinvex\Tags\Models\Tag                  $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update(TagFormRequest $request, TagContract $tag)
+    public function update(TagFormRequest $request, Tag $tag)
     {
         return $this->process($request, $tag);
     }
@@ -91,11 +91,11 @@ class TagsController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Rinvex\Tags\Contracts\TagContract      $tag
+     * @param \Rinvex\Tags\Models\Tag      $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function process(FormRequest $request, TagContract $tag)
+    protected function process(FormRequest $request, Tag $tag)
     {
         // Prepare required input fields
         $data = $request->validated();
@@ -112,11 +112,11 @@ class TagsController extends AuthorizedController
     /**
      * Delete the given resource from storage.
      *
-     * @param \Rinvex\Tags\Contracts\TagContract $tag
+     * @param \Rinvex\Tags\Models\Tag $tag
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete(TagContract $tag)
+    public function delete(Tag $tag)
     {
         $tag->delete();
 
