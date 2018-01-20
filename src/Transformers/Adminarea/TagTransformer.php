@@ -12,7 +12,7 @@ class TagTransformer extends TransformerAbstract
     /**
      * @return array
      */
-    public function transform(TagContract $tag)
+    public function transform(TagContract $tag): array
     {
         return [
             'id' => (int) $tag->getKey(),

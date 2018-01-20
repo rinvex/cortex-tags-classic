@@ -13,7 +13,7 @@ class TagFormRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -23,7 +23,7 @@ class TagFormRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $tag = $this->route('tag') ?? app('rinvex.tags.tag');
         $tag->updateRulesUniques();
