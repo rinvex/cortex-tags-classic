@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Providers;
 
-use Illuminate\Routing\Router;
 use Rinvex\Tags\Models\Tag;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;

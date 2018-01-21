@@ -78,7 +78,7 @@ class TagsController extends AuthorizedController
      * Update the given resource in storage.
      *
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
-     * @param \Rinvex\Tags\Models\Tag                  $tag
+     * @param \Rinvex\Tags\Models\Tag                             $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -91,7 +91,7 @@ class TagsController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Rinvex\Tags\Models\Tag      $tag
+     * @param \Rinvex\Tags\Models\Tag                 $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
