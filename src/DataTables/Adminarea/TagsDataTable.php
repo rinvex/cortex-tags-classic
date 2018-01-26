@@ -6,7 +6,6 @@ namespace Cortex\Tags\DataTables\Adminarea;
 
 use Rinvex\Tags\Models\Tag;
 use Cortex\Foundation\DataTables\AbstractDataTable;
-use Cortex\Tags\Transformers\Adminarea\TagTransformer;
 
 class TagsDataTable extends AbstractDataTable
 {
@@ -14,11 +13,6 @@ class TagsDataTable extends AbstractDataTable
      * {@inheritdoc}
      */
     protected $model = Tag::class;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $transformer = TagTransformer::class;
 
     /**
      * Get the query object to be processed by dataTables.
@@ -76,10 +70,7 @@ class TagsDataTable extends AbstractDataTable
      */
     public function ajax()
     {
-        $transformer = app($this->transformer);
-
         return datatables($this->query())
-            ->setTransformer($transformer)
             ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
