@@ -26,10 +26,10 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
+                @if($tag->exists && $currentUser->can('delete-tags', $tag)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tags.delete', ['tag' => $tag]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['type' => 'tag', 'name' => $tag->slug]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#details-tab" data-toggle="tab">{{ trans('cortex/tags::common.details') }}</a></li>
                     @if($tag->exists) <li><a href="#logs-tab" data-toggle="tab">{{ trans('cortex/tags::common.logs') }}</a></li> @endif
-                    @if($tag->exists && $currentUser->can('delete-tags', $tag)) <li class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tags.delete', ['tag' => $tag]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['type' => 'tag', 'name' => $tag->slug]) !!}" title="{{ trans('cortex/foundation::common.delete') }}"><i class="fa fa-trash text-danger"></i></a></li> @endif
                 </ul>
 
                 <div class="tab-content">
