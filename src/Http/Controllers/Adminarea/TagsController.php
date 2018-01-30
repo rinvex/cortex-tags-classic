@@ -40,11 +40,14 @@ class TagsController extends AuthorizedController
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function logs(Tag $tag)
+    public function logs(Tag $tag, LogsDataTable $logsDataTable)
     {
-        return request()->ajax() && request()->wantsJson()
-            ? app(LogsDataTable::class)->with(['resource' => $tag])->ajax()
-            : intend(['url' => route('adminarea.tags.edit', ['tag' => $tag]).'#logs-tab']);
+        return $logsDataTable->with([
+            'resource' => $tag,
+            'tabs' => 'adminarea.tags.tabs',
+            'phrase' => trans('cortex/tags::common.tags'),
+            'id' => "adminarea-tags-{$tag->getKey()}-logs-table",
+        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
@@ -57,9 +60,8 @@ class TagsController extends AuthorizedController
     public function form(Tag $tag)
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
-        $logs = app(LogsDataTable::class)->with(['id' => "adminarea-tags-{$tag->getKey()}-logs-table"])->html()->minifiedAjax(route('adminarea.tags.logs', ['tag' => $tag]));
 
-        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups', 'logs'));
+        return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups'));
     }
 
     /**
