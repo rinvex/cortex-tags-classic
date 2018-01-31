@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tags\Models;
 
 use Rinvex\Tags\Models\Tag as BaseTag;
+use Cortex\Foundation\Traits\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -39,6 +40,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  */
 class Tag extends BaseTag
 {
+    use Auditable;
     use LogsActivity;
 
     /**
