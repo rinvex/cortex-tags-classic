@@ -41,144 +41,118 @@
 
                             <div class="row">
 
-                                <div class="col-md-8">
-                                    <div class="row">
+                                <div class="col-md-4">
 
-                                        <div class="col-md-12">
+                                    {{-- Name --}}
+                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                        {{ Form::label('name', trans('cortex/tags::common.name'), ['class' => 'control-label']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.name'), 'data-slugify' => '[name="slug"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
 
-                                            {{-- Name --}}
-                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                {{ Form::label('name', trans('cortex/tags::common.name'), ['class' => 'control-label']) }}
-                                                {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.name'), 'data-slugify' => '[name="slug"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
-
-                                                @if ($errors->has('name'))
-                                                    <span class="help-block">{{ $errors->first('name') }}</span>
-                                                @endif
-                                            </div>
-
-                                        </div>
-
+                                        @if ($errors->has('name'))
+                                            <span class="help-block">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
 
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-
-                                            {{-- Description --}}
-                                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                                {{ Form::label('description', trans('cortex/tags::common.description'), ['class' => 'control-label']) }}
-                                                {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.description'), 'rows' => 5]) }}
-
-                                                @if ($errors->has('description'))
-                                                    <span class="help-block">{{ $errors->first('description') }}</span>
-                                                @endif
-                                            </div>
-
-                                        </div>
-
-                                    </div>
                                 </div>
 
                                 <div class="col-md-4">
 
-                                    <div class="row">
+                                    {{-- Slug --}}
+                                    <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+                                        {{ Form::label('slug', trans('cortex/tags::common.slug'), ['class' => 'control-label']) }}
+                                        {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.slug'), 'required' => 'required']) }}
 
-                                        <div class="col-md-12">
-
-                                            {{-- Slug --}}
-                                            <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-                                                {{ Form::label('slug', trans('cortex/tags::common.slug'), ['class' => 'control-label']) }}
-                                                {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.slug'), 'required' => 'required']) }}
-
-                                                @if ($errors->has('slug'))
-                                                    <span class="help-block">{{ $errors->first('slug') }}</span>
-                                                @endif
-                                            </div>
-
-                                        </div>
-
+                                        @if ($errors->has('slug'))
+                                            <span class="help-block">{{ $errors->first('slug') }}</span>
+                                        @endif
                                     </div>
 
-                                    <div class="row">
+                                </div>
 
-                                        <div class="col-md-12">
+                                <div class="col-md-2">
 
-                                            {{-- Style --}}
-                                            <div class="form-group{{ $errors->has('style') ? ' has-error' : '' }}">
-                                                {{ Form::label('style', trans('cortex/tags::common.style'), ['class' => 'control-label']) }}
-                                                {{ Form::text('style', null, ['class' => 'form-control style-picker', 'placeholder' => trans('cortex/tags::common.style'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
+                                    {{-- Style --}}
+                                    <div class="form-group{{ $errors->has('style') ? ' has-error' : '' }}">
+                                        {{ Form::label('style', trans('cortex/tags::common.style'), ['class' => 'control-label']) }}
+                                        {{ Form::text('style', null, ['class' => 'form-control style-picker', 'placeholder' => trans('cortex/tags::common.style'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
 
-                                                @if ($errors->has('style'))
-                                                    <span class="help-block">{{ $errors->first('style') }}</span>
-                                                @endif
-                                            </div>
-
-                                        </div>
-
+                                        @if ($errors->has('style'))
+                                            <span class="help-block">{{ $errors->first('style') }}</span>
+                                        @endif
                                     </div>
 
-                                    <div class="row">
+                                </div>
 
-                                        <div class="col-md-12">
+                                <div class="col-md-2">
 
-                                            {{-- Icon --}}
-                                            <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
-                                                {{ Form::label('icon', trans('cortex/tags::common.icon'), ['class' => 'control-label']) }}
+                                    {{-- Icon --}}
+                                    <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
+                                        {{ Form::label('icon', trans('cortex/tags::common.icon'), ['class' => 'control-label']) }}
 
-                                                <div class="input-group">
-                                                    {{ Form::text('icon', null, ['class' => 'form-control icon-picker', 'placeholder' => trans('cortex/tags::common.icon'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
+                                        <div class="input-group">
+                                            {{ Form::text('icon', null, ['class' => 'form-control icon-picker', 'placeholder' => trans('cortex/tags::common.icon'), 'data-placement' => 'bottomRight', 'readonly' => 'readonly']) }}
 
-                                                    <div class="input-group-addon">
-                                                        <i style="width: 18px !important;"></i>
-                                                    </div>
-                                                </div>
-
-
-                                                @if ($errors->has('icon'))
-                                                    <span class="help-block">{{ $errors->first('icon') }}</span>
-                                                @endif
+                                            <div class="input-group-addon">
+                                                <i style="width: 18px !important;"></i>
                                             </div>
-
                                         </div>
 
+                                        @if ($errors->has('icon'))
+                                            <span class="help-block">{{ $errors->first('icon') }}</span>
+                                        @endif
                                     </div>
 
-                                    <div class="row">
+                                </div>
 
-                                        <div class="col-md-12">
+                            </div>
 
-                                            {{-- Group --}}
-                                            <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
-                                                {{ Form::label('group', trans('cortex/tags::common.group'), ['class' => 'control-label']) }}
-                                                {{ Form::hidden('group', '') }}
-                                                {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tags::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
+                            <div class="row">
 
-                                                @if ($errors->has('group'))
-                                                    <span class="help-block">{{ $errors->first('group') }}</span>
-                                                @endif
-                                            </div>
+                                <div class="col-md-6">
 
-                                        </div>
+                                    {{-- Group --}}
+                                    <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
+                                        {{ Form::label('group', trans('cortex/tags::common.group'), ['class' => 'control-label']) }}
+                                        {{ Form::hidden('group', '') }}
+                                        {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tags::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
+                                        @if ($errors->has('group'))
+                                            <span class="help-block">{{ $errors->first('group') }}</span>
+                                        @endif
                                     </div>
 
-                                    <div class="row">
+                                </div>
 
-                                        <div class="col-md-12">
+                                <div class="col-md-6">
 
-                                            {{-- Sort Order --}}
-                                            <div class="form-group{{ $errors->has('sort_order') ? ' has-error' : '' }}">
-                                                {{ Form::label('sort_order', trans('cortex/tags::common.sort_order'), ['class' => 'control-label']) }}
-                                                {{ Form::number('sort_order', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.sort_order')]) }}
+                                    {{-- Sort Order --}}
+                                    <div class="form-group{{ $errors->has('sort_order') ? ' has-error' : '' }}">
+                                        {{ Form::label('sort_order', trans('cortex/tags::common.sort_order'), ['class' => 'control-label']) }}
+                                        {{ Form::number('sort_order', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.sort_order')]) }}
 
-                                                @if ($errors->has('sort_order'))
-                                                    <span class="help-block">{{ $errors->first('sort_order') }}</span>
-                                                @endif
-                                            </div>
-
-                                        </div>
-
+                                        @if ($errors->has('sort_order'))
+                                            <span class="help-block">{{ $errors->first('sort_order') }}</span>
+                                        @endif
                                     </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    {{-- Description --}}
+                                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                        {{ Form::label('description', trans('cortex/tags::common.description'), ['class' => 'control-label']) }}
+                                        {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.description'), 'rows' => 5]) }}
+
+                                        @if ($errors->has('description'))
+                                            <span class="help-block">{{ $errors->first('description') }}</span>
+                                        @endif
+                                    </div>
+
                                 </div>
 
                             </div>
