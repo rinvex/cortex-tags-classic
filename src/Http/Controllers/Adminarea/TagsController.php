@@ -57,7 +57,31 @@ class TagsController extends AuthorizedController
      *
      * @return \Illuminate\View\View
      */
-    public function form(Tag $tag)
+    public function create(Tag $tag)
+    {
+        return $this->form($tag);
+    }
+
+    /**
+     * Edit given tag.
+     *
+     * @param \Cortex\Tags\Models\Tag $tag
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Tag $tag)
+    {
+        return $this->form($tag);
+    }
+
+    /**
+     * Show tag create/edit form.
+     *
+     * @param \Cortex\Tags\Models\Tag $tag
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Tag $tag)
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 

@@ -12,9 +12,9 @@ Route::domain(domain())->group(function () {
         // Tags Routes
         Route::name('tags.')->prefix('tags')->group(function () {
             Route::get('/')->name('index')->uses('TagsController@index');
-            Route::get('create')->name('create')->uses('TagsController@form');
+            Route::get('create')->name('create')->uses('TagsController@create');
             Route::post('create')->name('store')->uses('TagsController@store');
-            Route::get('{tag}')->name('edit')->uses('TagsController@form');
+            Route::get('{tag}')->name('edit')->uses('TagsController@edit');
             Route::put('{tag}')->name('update')->uses('TagsController@update');
             Route::get('{tag}/logs')->name('logs')->uses('TagsController@logs');
             Route::delete('{tag}')->name('destroy')->uses('TagsController@destroy');
