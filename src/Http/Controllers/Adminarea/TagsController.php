@@ -19,7 +19,7 @@ class TagsController extends AuthorizedController
     protected $resource = 'tag';
 
     /**
-     * Display a listing of the resource.
+     * List all tags.
      *
      * @param \Cortex\Tags\DataTables\Adminarea\TagsDataTable $tagsDataTable
      *
@@ -34,9 +34,10 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Get a listing of the resource logs.
+     * List tag logs.
      *
-     * @param \Rinvex\Tags\Models\Tag $tag
+     * @param \Cortex\Tags\Models\Tag                     $tag
+     * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -51,9 +52,9 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Show the form for create/update of the given resource.
+     * Create new tag.
      *
-     * @param \Rinvex\Tags\Models\Tag $tag
+     * @param \Cortex\Tags\Models\Tag $tag
      *
      * @return \Illuminate\View\View
      */
@@ -89,22 +90,23 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store new tag.
      *
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
+     * @param \Cortex\Tags\Models\Tag                             $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function store(TagFormRequest $request)
+    public function store(TagFormRequest $request, Tag $tag)
     {
-        return $this->process($request, app('rinvex.tags.tag'));
+        return $this->process($request, $tag);
     }
 
     /**
-     * Update the given resource in storage.
+     * Update given tag.
      *
      * @param \Cortex\Tags\Http\Requests\Adminarea\TagFormRequest $request
-     * @param \Rinvex\Tags\Models\Tag                             $tag
+     * @param \Cortex\Tags\Models\Tag                             $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -114,10 +116,10 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Process the form for store/update of the given resource.
+     * Process stored/updated tag.
      *
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Rinvex\Tags\Models\Tag                 $tag
+     * @param \Cortex\Tags\Models\Tag                 $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -136,9 +138,9 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Delete the given resource from storage.
+     * Destroy given tag.
      *
-     * @param \Rinvex\Tags\Models\Tag $tag
+     * @param \Cortex\Tags\Models\Tag $tag
      *
      * @return \Illuminate\Http\Response
      */
