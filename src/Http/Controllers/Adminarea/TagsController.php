@@ -118,7 +118,7 @@ class TagsController extends AuthorizedController
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete(Tag $tag)
+    public function destroy(Tag $tag)
     {
         $tag->delete();
 

@@ -17,7 +17,7 @@ Route::domain(domain())->group(function () {
             Route::get('{tag}')->name('edit')->uses('TagsController@form');
             Route::put('{tag}')->name('update')->uses('TagsController@update');
             Route::get('{tag}/logs')->name('logs')->uses('TagsController@logs');
-            Route::delete('{tag}')->name('delete')->uses('TagsController@delete');
+            Route::delete('{tag}')->name('destroy')->uses('TagsController@destroy');
         });
 
     });
