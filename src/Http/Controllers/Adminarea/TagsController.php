@@ -16,7 +16,7 @@ class TagsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'tags';
+    protected $resource = 'tag';
 
     /**
      * Display a listing of the resource.
