@@ -16,7 +16,7 @@ class AlterTagsTableAddAuditableColumns extends Migration
     public function up()
     {
         Schema::table(config('rinvex.tags.tables.tags'), function (Blueprint $table) {
-            $table->auditable(true);
+            $table->auditable();
         });
     }
 
