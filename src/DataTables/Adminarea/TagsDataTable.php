@@ -69,12 +69,12 @@ class TagsDataTable extends AbstractDataTable
     protected function getColumns(): array
     {
         $link = config('cortex.foundation.route.locale_prefix')
-            ? '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.slug, locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
-            : '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"';
+            ? '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.name, locale: \''.$this->request->segment(1).'\'})+"\">"+data+"</a>"'
+            : '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.name})+"\">"+data+"</a>"';
 
         return [
             'title' => ['title' => trans('cortex/tags::common.title'), 'render' => $link, 'responsivePriority' => 0],
-            'slug' => ['title' => trans('cortex/tags::common.slug')],
+            'name' => ['title' => trans('cortex/tags::common.name')],
             'group' => ['title' => trans('cortex/tags::common.group'), 'visible' => false],
             'created_at' => ['title' => trans('cortex/tags::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
             'updated_at' => ['title' => trans('cortex/tags::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],

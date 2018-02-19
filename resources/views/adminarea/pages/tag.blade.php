@@ -26,7 +26,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @if($tag->exists && $currentUser->can('delete', $tag)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tags.destroy', ['tag' => $tag]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['type' => 'tag', 'name' => $tag->slug]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
+                @if($tag->exists && $currentUser->can('delete', $tag)) <div class="pull-right"><a href="#" data-toggle="modal" data-target="#delete-confirmation" data-modal-action="{{ route('adminarea.tags.destroy', ['tag' => $tag]) }}" data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}" data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['type' => 'tag', 'name' => $tag->name]) !!}" title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i></a></div> @endif
                 {!! Menu::render('adminarea.tags.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
@@ -46,7 +46,7 @@
                                     {{-- Title --}}
                                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                         {{ Form::label('title', trans('cortex/tags::common.title'), ['class' => 'control-label']) }}
-                                        {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.title'), 'data-slugify' => '[name="slug"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                        {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.title'), 'data-slugify' => '[name="name"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
 
                                         @if ($errors->has('title'))
                                             <span class="help-block">{{ $errors->first('title') }}</span>
@@ -57,13 +57,13 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Slug --}}
-                                    <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-                                        {{ Form::label('slug', trans('cortex/tags::common.slug'), ['class' => 'control-label']) }}
-                                        {{ Form::text('slug', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.slug'), 'required' => 'required']) }}
+                                    {{-- Name --}}
+                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                        {{ Form::label('name', trans('cortex/tags::common.name'), ['class' => 'control-label']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.name'), 'required' => 'required']) }}
 
-                                        @if ($errors->has('slug'))
-                                            <span class="help-block">{{ $errors->first('slug') }}</span>
+                                        @if ($errors->has('name'))
+                                            <span class="help-block">{{ $errors->first('name') }}</span>
                                         @endif
                                     </div>
 
