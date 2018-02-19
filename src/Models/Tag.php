@@ -13,7 +13,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  *
  * @property int                                                                           $id
  * @property string                                                                        $slug
- * @property array                                                                         $name
+ * @property array                                                                         $title
  * @property array                                                                         $description
  * @property int                                                                           $sort_order
  * @property string                                                                        $group
@@ -31,7 +31,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSortOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereStyle($value)
@@ -48,7 +48,7 @@ class Tag extends BaseTag
      */
     protected $fillable = [
         'slug',
-        'name',
+        'title',
         'description',
         'sort_order',
         'group',
@@ -105,7 +105,7 @@ class Tag extends BaseTag
         $this->setTable(config('rinvex.tags.tables.tags'));
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',slug',
-            'name' => 'required|string|max:150',
+            'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
             'sort_order' => 'nullable|integer|max:10000000',
             'group' => 'nullable|string|max:150',

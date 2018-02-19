@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tags::common.tags') }} » {{ $tag->exists ? $tag->name : trans('cortex/tags::common.create_tag') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/tags::common.tags') }} » {{ $tag->exists ? $tag->title : trans('cortex/tags::common.create_tag') }}
 @endsection
 
 @push('inline-scripts')
@@ -43,13 +43,13 @@
 
                                 <div class="col-md-4">
 
-                                    {{-- Name --}}
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        {{ Form::label('name', trans('cortex/tags::common.name'), ['class' => 'control-label']) }}
-                                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.name'), 'data-slugify' => '[name="slug"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                                    {{-- Title --}}
+                                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                                        {{ Form::label('title', trans('cortex/tags::common.title'), ['class' => 'control-label']) }}
+                                        {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('cortex/tags::common.title'), 'data-slugify' => '[name="slug"]', 'required' => 'required', 'autofocus' => 'autofocus']) }}
 
-                                        @if ($errors->has('name'))
-                                            <span class="help-block">{{ $errors->first('name') }}</span>
+                                        @if ($errors->has('title'))
+                                            <span class="help-block">{{ $errors->first('title') }}</span>
                                         @endif
                                     </div>
 

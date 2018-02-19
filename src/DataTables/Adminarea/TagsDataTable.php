@@ -24,7 +24,7 @@ class TagsDataTable extends AbstractDataTable
             var colspan = api.columns(\':visible\').count();
             var rows = api.rows({page:\'current\'}).nodes();
 
-            api.column(\'group:name\', {page:\'current\'} ).data().each(function (rowGroup, rowIndex) {
+            api.column(\'group:title\', {page:\'current\'} ).data().each(function (rowGroup, rowIndex) {
                 if (lastGroup !== rowGroup) {
                     $(rows).eq(rowIndex).before(
                         \'<tr class="tag-group"><td colspan="\'+colspan+\'"><strong>\'+(rowGroup ? rowGroup : "No Group")+\'</strong></td></tr>\'
@@ -44,7 +44,7 @@ class TagsDataTable extends AbstractDataTable
     public function query()
     {
         $locale = app()->getLocale();
-        $query = app($this->model)->query()->orderBy('group', 'ASC')->orderBy('sort_order', 'ASC')->orderBy("name->\${$locale}", 'ASC');
+        $query = app($this->model)->query()->orderBy('group', 'ASC')->orderBy('sort_order', 'ASC')->orderBy("title->\${$locale}", 'ASC');
 
         return $this->applyScopes($query);
     }
@@ -57,7 +57,7 @@ class TagsDataTable extends AbstractDataTable
     public function ajax()
     {
         return datatables($this->query())
-            ->orderColumn('name', 'name->"$.'.app()->getLocale().'" $1')
+            ->orderColumn('title', 'title->"$.'.app()->getLocale().'" $1')
             ->make(true);
     }
 
@@ -73,7 +73,7 @@ class TagsDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.tags.edit\', {tag: full.slug})+"\">"+data+"</a>"';
 
         return [
-            'name' => ['title' => trans('cortex/tags::common.name'), 'render' => $link, 'responsivePriority' => 0],
+            'title' => ['title' => trans('cortex/tags::common.title'), 'render' => $link, 'responsivePriority' => 0],
             'slug' => ['title' => trans('cortex/tags::common.slug')],
             'group' => ['title' => trans('cortex/tags::common.group'), 'visible' => false],
             'created_at' => ['title' => trans('cortex/tags::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
