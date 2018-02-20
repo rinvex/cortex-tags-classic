@@ -16,7 +16,7 @@ class TagsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'tag';
+    protected $resource = Tag::class;
 
     /**
      * List all tags.
