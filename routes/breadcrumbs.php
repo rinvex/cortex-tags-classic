@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rinvex\Tags\Models\Tag;
+use Cortex\Tags\Models\Tag;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('adminarea.tags.index', function (BreadcrumbsGenerator $breadcrumbs) {

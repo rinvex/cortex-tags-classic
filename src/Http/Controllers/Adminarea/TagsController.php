@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Http\Controllers\Adminarea;
 
-use Rinvex\Tags\Models\Tag;
+use Cortex\Tags\Models\Tag;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;

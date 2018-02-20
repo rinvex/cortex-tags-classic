@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\DataTables\Adminarea;
 
-use Rinvex\Tags\Models\Tag;
+use Cortex\Tags\Models\Tag;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 
 class TagsDataTable extends AbstractDataTable
