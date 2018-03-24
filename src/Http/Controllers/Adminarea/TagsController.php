@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Http\Controllers\Adminarea;
 
+use Cortex\Foundation\DataTables\ImportLogsDataTable;
+use Cortex\Foundation\Http\Requests\ImportFormRequest;
+use Cortex\Foundation\Importers\DefaultImporter;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
@@ -49,6 +52,53 @@ class TagsController extends AuthorizedController
             'phrase' => trans('cortex/tags::common.tags'),
             'id' => "adminarea-tags-{$tag->getKey()}-logs-table",
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
+    }
+
+    /**
+     * Import tags.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function import()
+    {
+        return view('cortex/foundation::adminarea.pages.import', [
+            'id' => 'adminarea-tags-import',
+            'tabs' => 'adminarea.tags.tabs',
+            'url' => route('adminarea.tags.hoard'),
+            'phrase' => trans('cortex/tags::common.tags'),
+        ]);
+    }
+
+    /**
+     * Hoard tags.
+     *
+     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
+     * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
+     *
+     * @return void
+     */
+    public function hoard(ImportFormRequest $request, DefaultImporter $importer)
+    {
+        // Handle the import
+        $importer->config['resource'] = $this->resource;
+        $importer->handleImport();
+    }
+
+    /**
+     * List tag import logs.
+     *
+     * @param \Cortex\Foundation\DataTables\ImportLogsDataTable $importLogsDatatable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function importLogs(ImportLogsDataTable $importLogsDatatable)
+    {
+        return $importLogsDatatable->with([
+            'resource' => 'tag',
+            'tabs' => 'adminarea.tags.tabs',
+            'id' => 'adminarea-tags-import-logs-table',
+            'phrase' => trans('cortex/tags::common.tags'),
+        ])->render('cortex/foundation::adminarea.pages.datatable-import-logs');
     }
 
     /**

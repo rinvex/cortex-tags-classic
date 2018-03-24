@@ -10,6 +10,17 @@ Breadcrumbs::register('adminarea.tags.index', function (BreadcrumbsGenerator $br
     $breadcrumbs->push(trans('cortex/tags::common.tags'), route('adminarea.tags.index'));
 });
 
+Breadcrumbs::register('adminarea.tags.import', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.tags.index');
+    $breadcrumbs->push(trans('cortex/tags::common.import'), route('adminarea.tags.import'));
+});
+
+Breadcrumbs::register('adminarea.tags.import.logs', function (BreadcrumbsGenerator $breadcrumbs) {
+    $breadcrumbs->parent('adminarea.tags.index');
+    $breadcrumbs->push(trans('cortex/tags::common.import'), route('adminarea.tags.import'));
+    $breadcrumbs->push(trans('cortex/tags::common.logs'), route('adminarea.tags.import.logs'));
+});
+
 Breadcrumbs::register('adminarea.tags.create', function (BreadcrumbsGenerator $breadcrumbs) {
     $breadcrumbs->parent('adminarea.tags.index');
     $breadcrumbs->push(trans('cortex/tags::common.create_tag'), route('adminarea.tags.create'));
