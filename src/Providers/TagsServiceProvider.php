@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Providers;
 
+use Cortex\Tags\Models\Tag;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tags\Console\Commands\SeedCommand;
@@ -39,6 +40,10 @@ class TagsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Bind eloquent models to IoC container
+        $this->app['config']['rinvex.tags.models.tag'] === Tag::class
+        || $this->app->alias('rinvex.tags.tag', Tag::class);
+
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }
