@@ -14,6 +14,7 @@ class CortexTagsSeeder extends Seeder
     public function run()
     {
         Bouncer::allow('admin')->to('list', config('rinvex.tags.models.tag'));
+        Bouncer::allow('admin')->to('import', config('rinvex.tags.models.tag'));
         Bouncer::allow('admin')->to('create', config('rinvex.tags.models.tag'));
         Bouncer::allow('admin')->to('update', config('rinvex.tags.models.tag'));
         Bouncer::allow('admin')->to('delete', config('rinvex.tags.models.tag'));
