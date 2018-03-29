@@ -50,7 +50,7 @@ class TagsController extends AuthorizedController
             'resource' => $tag,
             'tabs' => 'adminarea.tags.tabs',
             'phrase' => trans('cortex/tags::common.tags'),
-            'id' => "adminarea-tags-{$tag->getKey()}-logs-table",
+            'id' => "adminarea-tags-{$tag->getRouteKey()}-logs-table",
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 

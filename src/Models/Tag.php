@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Models;
 
+use Vinkla\Hashids\Facades\Hashids;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -115,12 +116,25 @@ class Tag extends BaseTag
     }
 
     /**
-     * Get the route key for the model.
+     * Get the value of the model's route key.
      *
-     * @return string
+     * @return mixed
      */
-    public function getRouteKeyName(): string
+    public function getRouteKey()
     {
-        return 'name';
+        return Hashids::encode($this->getAttribute($this->getRouteKeyName()));
+    }
+
+    /**
+     * Retrieve the model for a bound value.
+     *
+     * @param  mixed  $value
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function resolveRouteBinding($value)
+    {
+        $value = Hashids::decode($value)[0];
+
+        return $this->where($this->getRouteKeyName(), $value)->first();
     }
 }

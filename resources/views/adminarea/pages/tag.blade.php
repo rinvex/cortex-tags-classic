@@ -7,7 +7,7 @@
 @endsection
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector("#adminarea-tags-create-form, #adminarea-tags-{$tag->getKey()}-update-form") !!}
+    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector("#adminarea-tags-create-form, #adminarea-tags-{$tag->getRouteKey()}-update-form") !!}
 @endpush
 
 {{-- Main Content --}}
@@ -34,7 +34,7 @@
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($tag->exists)
-                            {{ Form::model($tag, ['url' => route('adminarea.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => "adminarea-tags-{$tag->getKey()}-update-form"]) }}
+                            {{ Form::model($tag, ['url' => route('adminarea.tags.update', ['tag' => $tag]), 'method' => 'put', 'id' => "adminarea-tags-{$tag->getRouteKey()}-update-form"]) }}
                         @else
                             {{ Form::model($tag, ['url' => route('adminarea.tags.store'), 'id' => 'adminarea-tags-create-form']) }}
                         @endif
