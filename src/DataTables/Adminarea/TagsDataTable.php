@@ -61,7 +61,6 @@ class TagsDataTable extends AbstractDataTable
 
         return [
             'title' => ['title' => trans('cortex/tags::common.title'), 'render' => $link, 'responsivePriority' => 0],
-            'name' => ['title' => trans('cortex/tags::common.name')],
             'group' => ['title' => trans('cortex/tags::common.group'), 'visible' => false],
             'created_at' => ['title' => trans('cortex/tags::common.created_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],
             'updated_at' => ['title' => trans('cortex/tags::common.updated_at'), 'render' => "moment(data).format('MMM Do, YYYY')"],

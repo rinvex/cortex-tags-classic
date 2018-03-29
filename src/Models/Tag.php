@@ -13,7 +13,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * Cortex\Tags\Models\Tag.
  *
  * @property int                                                                           $id
- * @property string                                                                        $name
+ * @property string                                                                        $slug
  * @property array                                                                         $title
  * @property array                                                                         $description
  * @property int                                                                           $sort_order
@@ -33,7 +33,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereSortOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereStyle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag whereUpdatedAt($value)
@@ -48,7 +48,7 @@ class Tag extends BaseTag
      * {@inheritdoc}
      */
     protected $fillable = [
-        'name',
+        'slug',
         'title',
         'description',
         'sort_order',
@@ -61,7 +61,7 @@ class Tag extends BaseTag
      * {@inheritdoc}
      */
     protected $casts = [
-        'name' => 'string',
+        'slug' => 'string',
         'sort_order' => 'integer',
         'group' => 'string',
         'style' => 'string',
@@ -105,7 +105,7 @@ class Tag extends BaseTag
 
         $this->setTable(config('rinvex.tags.tables.tags'));
         $this->setRules([
-            'name' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',name',
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',slug',
             'title' => 'required|string|max:150',
             'description' => 'nullable|string|max:10000',
             'sort_order' => 'nullable|integer|max:10000000',
