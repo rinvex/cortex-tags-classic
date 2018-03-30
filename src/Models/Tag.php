@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Models;
 
-use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
+use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
