@@ -17,7 +17,7 @@ class TagTransformer extends TransformerAbstract
      */
     public function transform(Tag $tag): array
     {
-        return $this->escapeRow([
+        return $this->escape([
             'id' => (string) $tag->getRouteKey(),
             'name' => (string) $tag->name,
             'group' => (string) $tag->group,
