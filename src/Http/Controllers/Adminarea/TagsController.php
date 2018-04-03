@@ -32,7 +32,6 @@ class TagsController extends AuthorizedController
     {
         return $tagsDataTable->with([
             'id' => 'adminarea-tags-index-table',
-            'phrase' => trans('cortex/tags::common.tags'),
         ])->render('cortex/foundation::adminarea.pages.datatable');
     }
 
@@ -49,7 +48,6 @@ class TagsController extends AuthorizedController
         return $logsDataTable->with([
             'resource' => $tag,
             'tabs' => 'adminarea.tags.tabs',
-            'phrase' => trans('cortex/tags::common.tags'),
             'id' => "adminarea-tags-{$tag->getRouteKey()}-logs-table",
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
@@ -65,7 +63,6 @@ class TagsController extends AuthorizedController
             'id' => 'adminarea-tags-import',
             'tabs' => 'adminarea.tags.tabs',
             'url' => route('adminarea.tags.hoard'),
-            'phrase' => trans('cortex/tags::common.tags'),
         ]);
     }
 
@@ -97,8 +94,7 @@ class TagsController extends AuthorizedController
             'resource' => 'tag',
             'tabs' => 'adminarea.tags.tabs',
             'id' => 'adminarea-tags-import-logs-table',
-            'phrase' => trans('cortex/tags::common.tags'),
-        ])->render('cortex/foundation::adminarea.pages.datatable-import-logs');
+        ])->render('cortex/foundation::adminarea.pages.datatable-logs');
     }
 
     /**
