@@ -91,7 +91,7 @@ class TagsController extends AuthorizedController
     public function importLogs(ImportLogsDataTable $importLogsDatatable)
     {
         return $importLogsDatatable->with([
-            'resource' => 'tag',
+            'resource' => trans('cortex/tags::common.tag'),
             'tabs' => 'adminarea.tags.tabs',
             'id' => 'adminarea-tags-import-logs-table',
         ])->render('cortex/foundation::adminarea.pages.datatable-logs');
@@ -179,7 +179,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tags.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => 'tag', 'identifier' => $tag->name])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name])],
         ]);
     }
 
@@ -196,7 +196,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tags.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => 'tag', 'identifier' => $tag->name])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name])],
         ]);
     }
 }
