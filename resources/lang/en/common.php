@@ -17,7 +17,7 @@ return [
     'submit' => 'Submit',
     'details' => 'Details',
     'select_group' => 'Select Group',
-    'file' => 'File',
+    'records' => 'Records',
     'import' => 'Import',
 
     'tags' => 'Tags',

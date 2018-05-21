@@ -12,7 +12,8 @@ Route::domain(domain())->group(function () {
              Route::name('tags.')->prefix('tags')->group(function () {
                  Route::get('/')->name('index')->uses('TagsController@index');
                  Route::get('import')->name('import')->uses('TagsController@import');
-                 Route::post('import')->name('hoard')->uses('TagsController@hoard');
+                 Route::post('import')->name('stash')->uses('TagsController@stash');
+                 Route::post('hoard')->name('hoard')->uses('TagsController@hoard');
                  Route::get('import/logs')->name('import.logs')->uses('TagsController@importLogs');
                  Route::get('create')->name('create')->uses('TagsController@create');
                  Route::post('create')->name('store')->uses('TagsController@store');

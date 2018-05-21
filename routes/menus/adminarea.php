@@ -13,7 +13,7 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Tag $tag) {
 });
 
 Menu::register('adminarea.tags.tabs', function (MenuGenerator $menu, Tag $tag) {
-    $menu->route(['adminarea.tags.import'], trans('cortex/tags::common.file'))->ifCan('import', $tag)->if(Route::is('adminarea.tags.import*'));
+    $menu->route(['adminarea.tags.import'], trans('cortex/tags::common.records'))->ifCan('import', $tag)->if(Route::is('adminarea.tags.import*'));
     $menu->route(['adminarea.tags.import.logs'], trans('cortex/tags::common.logs'))->ifCan('import', $tag)->if(Route::is('adminarea.tags.import*'));
     $menu->route(['adminarea.tags.create'], trans('cortex/tags::common.details'))->ifCan('create', $tag)->if(Route::is('adminarea.tags.create'));
     $menu->route(['adminarea.tags.edit', ['tag' => $tag]], trans('cortex/tags::common.details'))->ifCan('update', $tag)->if($tag->exists);
