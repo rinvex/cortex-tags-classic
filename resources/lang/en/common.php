@@ -20,6 +20,7 @@ return [
     'records' => 'Records',
     'import' => 'Import',
 
+    'tag' => 'Tag',
     'tags' => 'Tags',
     'create_tag' => 'Create New Tag',
 
