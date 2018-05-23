@@ -115,4 +115,14 @@ class Tag extends BaseTag
             'icon' => 'nullable|string|max:150',
         ]);
     }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
