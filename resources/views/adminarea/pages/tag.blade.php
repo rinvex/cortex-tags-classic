@@ -7,7 +7,7 @@
 @endsection
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector("#adminarea-tags-create-form, #adminarea-tags-{$tag->getRouteKey()}-update-form") !!}
+    {!! JsValidator::formRequest(Cortex\Tags\Http\Requests\Adminarea\TagFormRequest::class)->selector("#adminarea-tags-create-form, #adminarea-tags-{$tag->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
 @endpush
 
 {{-- Main Content --}}
@@ -123,7 +123,7 @@
                                     {{-- Group --}}
                                     <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
                                         {{ Form::label('group', trans('cortex/tags::common.group'), ['class' => 'control-label']) }}
-                                        {{ Form::hidden('group', '') }}
+                                        {{ Form::hidden('group', '', ['class' => 'skip-validation']) }}
                                         {{ Form::select('group', $groups, null, ['class' => 'form-control select2', 'placeholder' => trans('cortex/tags::common.select_group'), 'data-tags' => 'true', 'data-allow-clear' => 'true', 'data-width' => '100%']) }}
 
                                         @if ($errors->has('group'))
