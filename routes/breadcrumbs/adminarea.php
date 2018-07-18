@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Cortex\Tags\Models\Tag;
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('adminarea.tags.index', function (BreadcrumbsGenerator $breadcrumbs) {

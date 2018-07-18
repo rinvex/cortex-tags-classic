@@ -225,7 +225,9 @@ class TagsController extends AuthorizedController
      *
      * @param \Cortex\Tags\Models\Tag $tag
      *
-     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function destroy(Tag $tag)
     {
