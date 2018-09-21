@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Transformers\Adminarea;
 
-use Rinvex\Tags\Contracts\TagContract;
+use Cortex\Tags\Models\Tag;
+use Rinvex\Support\Traits\Escaper;
 use League\Fractal\TransformerAbstract;
 
 class TagTransformer extends TransformerAbstract
 {
+    use Escaper;
+
     /**
      * @return array
      */
-    public function transform(TagContract $tag)
+    public function transform(Tag $tag): array
     {
-        return [
-            'id' => (int) $tag->id,
+        return $this->escape([
+            'id' => (string) $tag->getRouteKey(),
             'name' => (string) $tag->name,
-            'slug' => (string) $tag->slug,
             'group' => (string) $tag->group,
-            'sort_order' => (string) $tag->sort_order,
             'created_at' => (string) $tag->created_at,
             'updated_at' => (string) $tag->updated_at,
-        ];
+        ]);
     }
 }

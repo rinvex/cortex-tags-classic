@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Providers;
 
+use Cortex\Tags\Models\Tag;
 use Illuminate\Routing\Router;
-use Rinvex\Tags\Contracts\TagContract;
 use Illuminate\Support\ServiceProvider;
 use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
 use Cortex\Tags\Console\Commands\MigrateCommand;
 use Cortex\Tags\Console\Commands\PublishCommand;
+use Cortex\Tags\Console\Commands\RollbackCommand;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
 {
@@ -20,10 +22,11 @@ class TagsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.tags.seed',
+        InstallCommand::class => 'command.cortex.tags.install',
         MigrateCommand::class => 'command.cortex.tags.migrate',
         PublishCommand::class => 'command.cortex.tags.publish',
-        InstallCommand::class => 'command.cortex.tags.install',
-        SeedCommand::class => 'command.cortex.tags.seed',
+        RollbackCommand::class => 'command.cortex.tags.rollback',
     ];
 
     /**
@@ -35,8 +38,12 @@ class TagsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
+        // Bind eloquent models to IoC container
+        $this->app['config']['rinvex.tags.models.tag'] === Tag::class
+        || $this->app->alias('rinvex.tags.tag', Tag::class);
+
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
     }
@@ -46,19 +53,25 @@ class TagsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot(Router $router): void
     {
         // Bind route models and constrains
-        $router->pattern('tag', '[a-z0-9-]+');
-        $router->model('tag', TagContract::class);
+        $router->pattern('tag', '[a-zA-Z0-9-]+');
+        $router->model('tag', config('rinvex.tags.models.tag'));
+
+        // Map relations
+        Relation::morphMap([
+            'tag' => config('rinvex.tags.models.tag'),
+        ]);
 
         // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        require __DIR__.'/../../routes/breadcrumbs/adminarea.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tags');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tags');
-        $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
+        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
@@ -70,8 +83,9 @@ class TagsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishResources()
+    protected function publishResources(): void
     {
+        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-tags-migrations');
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tags')], 'cortex-tags-lang');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tags')], 'cortex-tags-views');
     }
@@ -81,13 +95,11 @@ class TagsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
+            $this->app->singleton($value, $key);
         }
 
         $this->commands(array_values($this->commands));

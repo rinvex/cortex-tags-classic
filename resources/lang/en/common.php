@@ -6,6 +6,8 @@ return [
 
     'name' => 'Name',
     'slug' => 'Slug',
+    'style' => 'Style',
+    'icon' => 'Icon',
     'description' => 'Description',
     'group' => 'Group',
     'sort_order' => 'Sort Order',
@@ -15,7 +17,10 @@ return [
     'submit' => 'Submit',
     'details' => 'Details',
     'select_group' => 'Select Group',
+    'records' => 'Records',
+    'import' => 'Import',
 
+    'tag' => 'Tag',
     'tags' => 'Tags',
     'create_tag' => 'Create New Tag',
 

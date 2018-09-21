@@ -3,13 +3,11 @@
 **Cortex Tags** is a frontend layer for the polymorphic Laravel package, for tag management. You can tag any eloquent model with ease, and utilize the awesomeness of Sluggable, and Translatable models out of the box.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/tags.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/tags)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:tags.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:tags/)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/tags.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/tags/)
-[![Code Climate](https://img.shields.io/codeclimate/github/cortex/tags.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/tags)
-[![Travis](https://img.shields.io/travis/cortex/tags.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/tags)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/b13e9dbf-50de-49cd-a0f9-8de2e64a6ec8.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/b13e9dbf-50de-49cd-a0f9-8de2e64a6ec8)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/cortex-tags.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/cortex-tags/)
+[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/cortex-tags.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/cortex-tags)
+[![Travis](https://img.shields.io/travis/rinvex/cortex-tags.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/cortex-tags)
 [![StyleCI](https://styleci.io/repos/93621990/shield)](https://styleci.io/repos/93621990)
-[![License](https://img.shields.io/packagist/l/cortex/tags.svg?label=License&style=flat-square)](https://github.com/cortex/tags/blob/develop/LICENSE)
+[![License](https://img.shields.io/packagist/l/cortex/tags.svg?label=License&style=flat-square)](https://github.com/rinvex/cortex-tags/blob/develop/LICENSE)
 
 
 ## Installation and Usage
@@ -60,4 +58,4 @@ Rinvex is a software solutions startup, specialized in integrated enterprise sol
 
 This software is released under [The MIT License (MIT)](LICENSE).
 
-(c) 2016-2017 Rinvex LLC, Some rights reserved.
+(c) 2016-2018 Rinvex LLC, Some rights reserved.

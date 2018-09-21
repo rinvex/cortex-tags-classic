@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Console\Commands;
 
-use Illuminate\Console\Command;
+use Rinvex\Tags\Console\Commands\PublishCommand as BasePublishCommand;
 
-class PublishCommand extends Command
+class PublishCommand extends BasePublishCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:tags';
+    protected $signature = 'cortex:publish:tags {--force : Overwrite any existing files.}';
 
     /**
      * The console command description.
@@ -27,11 +27,12 @@ class PublishCommand extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
-        $this->warn('Publish cortex/tags:');
-        $this->call('vendor:publish', ['--tag' => 'rinvex-tags-config']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-tags-views']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-tags-lang']);
+        parent::handle();
+
+        $this->call('vendor:publish', ['--tag' => 'cortex-tags-lang', '--force' => $this->option('force')]);
+        $this->call('vendor:publish', ['--tag' => 'cortex-tags-views', '--force' => $this->option('force')]);
+        $this->call('vendor:publish', ['--tag' => 'cortex-tags-migrations', '--force' => $this->option('force')]);
     }
 }
