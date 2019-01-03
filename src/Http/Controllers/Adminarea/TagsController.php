@@ -135,30 +135,6 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Create new tag.
-     *
-     * @param \Cortex\Tags\Models\Tag $tag
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create(Tag $tag)
-    {
-        return $this->form($tag);
-    }
-
-    /**
-     * Edit given tag.
-     *
-     * @param \Cortex\Tags\Models\Tag $tag
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Tag $tag)
-    {
-        return $this->form($tag);
-    }
-
-    /**
      * Show tag create/edit form.
      *
      * @param \Cortex\Tags\Models\Tag $tag
