@@ -13,11 +13,17 @@ class CortexTagsSeeder extends Seeder
      */
     public function run()
     {
-        Bouncer::allow('admin')->to('list', config('rinvex.tags.models.tag'));
-        Bouncer::allow('admin')->to('import', config('rinvex.tags.models.tag'));
-        Bouncer::allow('admin')->to('create', config('rinvex.tags.models.tag'));
-        Bouncer::allow('admin')->to('update', config('rinvex.tags.models.tag'));
-        Bouncer::allow('admin')->to('delete', config('rinvex.tags.models.tag'));
-        Bouncer::allow('admin')->to('audit', config('rinvex.tags.models.tag'));
+        $abilities = [
+            ['name' => 'list', 'title' => 'List tags', 'entity_type' => 'tag'],
+            ['name' => 'import', 'title' => 'Import tags', 'entity_type' => 'tag'],
+            ['name' => 'create', 'title' => 'Create tags', 'entity_type' => 'tag'],
+            ['name' => 'update', 'title' => 'Update tags', 'entity_type' => 'tag'],
+            ['name' => 'delete', 'title' => 'Delete tags', 'entity_type' => 'tag'],
+            ['name' => 'audit', 'title' => 'Audit tags', 'entity_type' => 'tag'],
+        ];
+
+        collect($abilities)->each(function (array $ability) {
+            app('cortex.auth.ability')->create($ability);
+        });
     }
 }
