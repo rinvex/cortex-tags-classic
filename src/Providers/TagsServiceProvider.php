@@ -7,6 +7,7 @@ namespace Cortex\Tags\Providers;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Support\Traits\ConsoleTools;
 use Cortex\Tags\Console\Commands\SeedCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
 use Cortex\Tags\Console\Commands\MigrateCommand;
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
 {
+    use ConsoleTools;
+
     /**
      * The commands to be registered.
      *
@@ -69,39 +72,13 @@ class TagsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tags');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tags');
-        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishResources();
-    }
-
-    /**
-     * Publish resources.
-     *
-     * @return void
-     */
-    protected function publishResources(): void
-    {
-        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-tags-migrations');
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/tags')], 'cortex-tags-lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/tags')], 'cortex-tags-views');
-    }
-
-    /**
-     * Register console commands.
-     *
-     * @return void
-     */
-    protected function registerCommands(): void
-    {
-        // Register artisan commands
-        foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, $key);
-        }
-
-        $this->commands(array_values($this->commands));
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/tags');
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/tags');
+        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tags');
     }
 }
