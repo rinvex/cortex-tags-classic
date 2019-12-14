@@ -60,7 +60,7 @@ class TagsServiceProvider extends ServiceProvider
     public function boot(Router $router, Dispatcher $dispatcher): void
     {
         // Bind route models and constrains
-        $router->pattern('tag', '[a-zA-Z0-9-]+');
+        $router->pattern('tag', '[a-zA-Z0-9-_]+');
         $router->model('tag', config('rinvex.tags.models.tag'));
 
         // Map relations
