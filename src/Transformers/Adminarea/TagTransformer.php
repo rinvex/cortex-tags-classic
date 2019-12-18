@@ -19,6 +19,7 @@ class TagTransformer extends TransformerAbstract
     {
         return $this->escape([
             'id' => (string) $tag->getRouteKey(),
+            'DT_RowId' => 'row_'.$tag->getRouteKey(),
             'name' => (string) $tag->name,
             'group' => (string) $tag->group,
             'created_at' => (string) $tag->created_at,
