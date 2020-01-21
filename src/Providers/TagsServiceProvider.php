@@ -82,9 +82,9 @@ class TagsServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/tags', true);
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/tags', true);
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/tags', true);
-        ! $this->app['config']['cortex.tags.autoload_migrations'] || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->publishesLang('cortex/tags', true);
+        $this->publishesViews('cortex/tags', true);
+        $this->publishesMigrations('cortex/tags', true);
+        ! $this->autoloadMigrations('cortex.tags') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
