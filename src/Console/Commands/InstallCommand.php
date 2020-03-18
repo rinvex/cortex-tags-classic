@@ -13,7 +13,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:install:tags {--force : Force the operation to run when in production.}';
+    protected $signature = 'cortex:install:tags {--f|force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
