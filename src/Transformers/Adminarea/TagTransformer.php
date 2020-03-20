@@ -13,6 +13,12 @@ class TagTransformer extends TransformerAbstract
     use Escaper;
 
     /**
+     * Transform tag model.
+     *
+     * @param \Cortex\Tags\Models\Tag $tag
+     *
+     * @throws \Exception
+     *
      * @return array
      */
     public function transform(Tag $tag): array
