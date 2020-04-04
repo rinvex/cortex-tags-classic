@@ -75,6 +75,7 @@ class TagsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tags');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tags');
+        ! $this->autoloadMigrations('cortex/tags') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
             ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
@@ -85,6 +86,5 @@ class TagsServiceProvider extends ServiceProvider
         $this->publishesLang('cortex/tags', true);
         $this->publishesViews('cortex/tags', true);
         $this->publishesMigrations('cortex/tags', true);
-        ! $this->autoloadMigrations('cortex.tags') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
