@@ -52,7 +52,7 @@ class TagsServiceProvider extends ServiceProvider
         || $this->app->alias('rinvex.tags.tag', Tag::class);
 
         // Register console commands
-        $this->registerCommands();
+        $this->registerCommands($this->commands);
     }
 
     /**
