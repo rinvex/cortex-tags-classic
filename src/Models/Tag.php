@@ -108,7 +108,7 @@ class Tag extends BaseTag
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',slug',
             'name' => 'required|string|strip_tags|max:150',
-            'description' => 'nullable|string|strip_tags|max:10000',
+            'description' => 'nullable|string|max:10000',
             'sort_order' => 'nullable|integer|max:10000',
             'group' => 'nullable|string|strip_tags|max:150',
             'style' => 'nullable|string|strip_tags|max:150',
