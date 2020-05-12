@@ -29,11 +29,11 @@ Breadcrumbs::register('adminarea.tags.create', function (BreadcrumbsGenerator $b
 
 Breadcrumbs::register('adminarea.tags.edit', function (BreadcrumbsGenerator $breadcrumbs, Tag $tag) {
     $breadcrumbs->parent('adminarea.tags.index');
-    $breadcrumbs->push($tag->name, route('adminarea.tags.edit', ['tag' => $tag]));
+    $breadcrumbs->push(strip_tags($tag->name), route('adminarea.tags.edit', ['tag' => $tag]));
 });
 
 Breadcrumbs::register('adminarea.tags.logs', function (BreadcrumbsGenerator $breadcrumbs, Tag $tag) {
     $breadcrumbs->parent('adminarea.tags.index');
-    $breadcrumbs->push($tag->name, route('adminarea.tags.edit', ['tag' => $tag]));
+    $breadcrumbs->push(strip_tags($tag->name), route('adminarea.tags.edit', ['tag' => $tag]));
     $breadcrumbs->push(trans('cortex/tags::common.logs'), route('adminarea.tags.logs', ['tag' => $tag]));
 });
