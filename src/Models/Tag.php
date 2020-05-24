@@ -7,8 +7,8 @@ namespace Cortex\Tags\Models;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Cortex\Foundation\Events\CrudPerformed;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
