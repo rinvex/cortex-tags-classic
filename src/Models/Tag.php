@@ -8,6 +8,8 @@ use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Events\CrudPerformed;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Tags\Models\Tag.
@@ -44,6 +46,7 @@ class Tag extends BaseTag
     use Auditable;
     use HashidsTrait;
     use LogsActivity;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -68,6 +71,18 @@ class Tag extends BaseTag
         'style' => 'string',
         'icon' => 'string',
         'deleted_at' => 'datetime',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => CrudPerformed::class,
+        'deleted' => CrudPerformed::class,
+        'restored' => CrudPerformed::class,
+        'updated' => CrudPerformed::class,
     ];
 
     /**
