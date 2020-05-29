@@ -30,7 +30,7 @@
                            data-modal-action="{{ route('adminarea.tags.destroy', ['tag' => $tag]) }}"
                            data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}"
                            data-modal-button="<a href='#' class='btn btn-danger' data-form='delete' data-token='{{ csrf_token() }}'><i class='fa fa-trash-o'></i> {{ trans('cortex/foundation::common.delete') }}</a>"
-                           data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name]) }}"
+                           data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->getRouteKey()]) }}"
                            title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i>
                         </a>
                     </div>
