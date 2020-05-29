@@ -192,7 +192,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tags.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => strip_tags($tag->name)])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name])],
         ]);
     }
 
@@ -211,7 +211,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tags.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => strip_tags($tag->name)])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name])],
         ]);
     }
 }
