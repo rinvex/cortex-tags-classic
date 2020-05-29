@@ -7,12 +7,12 @@ namespace Cortex\Tags\Models;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
-use Cortex\Foundation\Events\ModelDeleted;
 use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
 use Cortex\Foundation\Events\ModelUpdated;
 use Cortex\Foundation\Events\ModelRestored;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Tags\Models\Tag.
