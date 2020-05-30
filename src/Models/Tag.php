@@ -7,7 +7,12 @@ namespace Cortex\Tags\Models;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Tags\Models\Tag.
@@ -44,6 +49,7 @@ class Tag extends BaseTag
     use Auditable;
     use HashidsTrait;
     use LogsActivity;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -68,6 +74,18 @@ class Tag extends BaseTag
         'style' => 'string',
         'icon' => 'string',
         'deleted_at' => 'datetime',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => ModelCreated::class,
+        'deleted' => ModelDeleted::class,
+        'restored' => ModelRestored::class,
+        'updated' => ModelUpdated::class,
     ];
 
     /**
@@ -107,12 +125,12 @@ class Tag extends BaseTag
         $this->setTable(config('rinvex.tags.tables.tags'));
         $this->setRules([
             'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',slug',
-            'name' => 'required|string|max:150',
+            'name' => 'required|string|strip_tags|max:150',
             'description' => 'nullable|string|max:10000',
-            'sort_order' => 'nullable|integer|max:10000000',
-            'group' => 'nullable|string|max:150',
-            'style' => 'nullable|string|max:150',
-            'icon' => 'nullable|string|max:150',
+            'sort_order' => 'nullable|integer|max:10000',
+            'group' => 'nullable|string|strip_tags|max:150',
+            'style' => 'nullable|string|strip_tags|max:150',
+            'icon' => 'nullable|string|strip_tags|max:150',
         ]);
     }
 

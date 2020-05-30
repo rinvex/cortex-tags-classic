@@ -33,7 +33,7 @@ class TagsController extends AuthorizedController
     public function index(TagsDataTable $tagsDataTable)
     {
         return $tagsDataTable->with([
-            'id' => 'adminarea-tags-index-table',
+            'id' => 'adminarea-tags-index',
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
@@ -50,7 +50,7 @@ class TagsController extends AuthorizedController
         return $logsDataTable->with([
             'resource' => $tag,
             'tabs' => 'adminarea.tags.tabs',
-            'id' => "adminarea-tags-{$tag->getRouteKey()}-logs-table",
+            'id' => "adminarea-tags-{$tag->getRouteKey()}-logs",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -68,7 +68,7 @@ class TagsController extends AuthorizedController
             'resource' => $tag,
             'tabs' => 'adminarea.tags.tabs',
             'url' => route('adminarea.tags.stash'),
-            'id' => "adminarea-tags-{$tag->getRouteKey()}-import-table",
+            'id' => "adminarea-tags-{$tag->getRouteKey()}-import",
         ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
@@ -130,7 +130,7 @@ class TagsController extends AuthorizedController
         return $importLogsDatatable->with([
             'resource' => trans('cortex/tags::common.tag'),
             'tabs' => 'adminarea.tags.tabs',
-            'id' => 'adminarea-tags-import-logs-table',
+            'id' => 'adminarea-tags-import-logs',
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -192,7 +192,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tags.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->getRouteKey()])],
         ]);
     }
 
@@ -211,7 +211,7 @@ class TagsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.tags.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->name])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/tags::common.tag'), 'identifier' => $tag->getRouteKey()])],
         ]);
     }
 }
