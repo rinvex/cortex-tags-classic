@@ -52,31 +52,6 @@ class Tag extends BaseTag
     use FiresCustomModelEvent;
 
     /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [
-        'slug',
-        'name',
-        'description',
-        'sort_order',
-        'group',
-        'style',
-        'icon',
-    ];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $casts = [
-        'slug' => 'string',
-        'sort_order' => 'integer',
-        'group' => 'string',
-        'style' => 'string',
-        'icon' => 'string',
-        'deleted_at' => 'datetime',
-    ];
-
-    /**
      * The event map for the model.
      *
      * @var array
@@ -122,16 +97,13 @@ class Tag extends BaseTag
     {
         parent::__construct($attributes);
 
+        $this->mergeFillable(['style', 'icon']);
+
+        $this->mergeCasts(['style' => 'string', 'icon' => 'string']);
+
+        $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
+
         $this->setTable(config('rinvex.tags.tables.tags'));
-        $this->setRules([
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.tags.tables.tags').',slug',
-            'name' => 'required|string|strip_tags|max:150',
-            'description' => 'nullable|string|max:10000',
-            'sort_order' => 'nullable|integer|max:10000',
-            'group' => 'nullable|string|strip_tags|max:150',
-            'style' => 'nullable|string|strip_tags|max:150',
-            'icon' => 'nullable|string|strip_tags|max:150',
-        ]);
     }
 
     /**
