@@ -44,9 +44,6 @@ class TagsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Merge config
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.tags');
-
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.tags.models.tag'] === Tag::class
         || $this->app->alias('rinvex.tags.tag', Tag::class);
@@ -70,20 +67,5 @@ class TagsServiceProvider extends ServiceProvider
         Relation::morphMap([
             'tag' => config('rinvex.tags.models.tag'),
         ]);
-
-        // Load resources
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/tags');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/tags');
-        ! $this->autoloadMigrations('cortex/tags') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
-        $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
-            ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
-            ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
-        });
-
-        // Publish Resources
-        $this->publishesLang('cortex/tags', true);
-        $this->publishesViews('cortex/tags', true);
-        $this->publishesMigrations('cortex/tags', true);
     }
 }
