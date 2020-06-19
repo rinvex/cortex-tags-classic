@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Models;
 
+use Rinvex\Support\Traits\Macroable;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
@@ -47,6 +48,7 @@ use Cortex\Foundation\Traits\FiresCustomModelEvent;
 class Tag extends BaseTag
 {
     use Auditable;
+    use Macroable;
     use HashidsTrait;
     use LogsActivity;
     use FiresCustomModelEvent;
