@@ -8,6 +8,7 @@ use Rinvex\Support\Traits\Macroable;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Rinvex\Support\Traits\HasTimezones;
 use Cortex\Foundation\Events\ModelCreated;
 use Cortex\Foundation\Events\ModelDeleted;
 use Cortex\Foundation\Events\ModelUpdated;
@@ -50,6 +51,7 @@ class Tag extends BaseTag
     use Auditable;
     use Macroable;
     use HashidsTrait;
+    use HasTimezones;
     use LogsActivity;
     use FiresCustomModelEvent;
 
