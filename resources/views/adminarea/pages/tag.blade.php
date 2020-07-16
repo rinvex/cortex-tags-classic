@@ -24,7 +24,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @if($tag->exists && $currentUser->can('delete', $tag))
+                @if($tag->exists && app('request.user')->can('delete', $tag))
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#delete-confirmation"
                            data-modal-action="{{ route('adminarea.tags.destroy', ['tag' => $tag]) }}"
