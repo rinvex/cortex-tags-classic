@@ -6,6 +6,7 @@ namespace Cortex\Tags\Http\Controllers\Adminarea;
 
 use Exception;
 use Cortex\Tags\Models\Tag;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
@@ -135,13 +136,40 @@ class TagsController extends AuthorizedController
     }
 
     /**
-     * Show tag create/edit form.
+     * Create new tag.
      *
-     * @param \Cortex\Tags\Models\Tag $tag
+     * @param \Illuminate\Http\Request $request
+     * @param \Cortex\Tags\Models\Tag  $tag
      *
      * @return \Illuminate\View\View
      */
-    protected function form(Tag $tag)
+    public function create(Request $request, Tag $tag)
+    {
+        return $this->form($request, $tag);
+    }
+
+    /**
+     * Edit given tag.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Cortex\Tags\Models\Tag  $tag
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(Request $request, Tag $tag)
+    {
+        return $this->form($request, $tag);
+    }
+
+    /**
+     * Show tag create/edit form.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Cortex\Tags\Models\Tag  $tag
+     *
+     * @return \Illuminate\View\View
+     */
+    protected function form(Request $request, Tag $tag)
     {
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 

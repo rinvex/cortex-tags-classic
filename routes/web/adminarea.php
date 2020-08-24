@@ -15,10 +15,10 @@ Route::domain(domain())->group(function () {
                  Route::post('import')->name('stash')->uses('TagsController@stash');
                  Route::post('hoard')->name('hoard')->uses('TagsController@hoard');
                  Route::get('import/logs')->name('import.logs')->uses('TagsController@importLogs');
-                 Route::get('create')->name('create')->uses('TagsController@form');
+                 Route::get('create')->name('create')->uses('TagsController@create');
                  Route::post('create')->name('store')->uses('TagsController@store');
                  Route::get('{tag}')->name('show')->uses('TagsController@show');
-                 Route::get('{tag}/edit')->name('edit')->uses('TagsController@form');
+                 Route::get('{tag}/edit')->name('edit')->uses('TagsController@edit');
                  Route::put('{tag}/edit')->name('update')->uses('TagsController@update');
                  Route::get('{tag}/logs')->name('logs')->uses('TagsController@logs');
                  Route::delete('{tag}')->name('destroy')->uses('TagsController@destroy');
