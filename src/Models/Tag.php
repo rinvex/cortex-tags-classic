@@ -9,12 +9,7 @@ use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Support\Traits\HasTimezones;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Tags\Models\Tag.
@@ -53,19 +48,6 @@ class Tag extends BaseTag
     use HashidsTrait;
     use HasTimezones;
     use LogsActivity;
-    use FiresCustomModelEvent;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'created' => ModelCreated::class,
-        'deleted' => ModelDeleted::class,
-        'restored' => ModelRestored::class,
-        'updated' => ModelUpdated::class,
-    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
