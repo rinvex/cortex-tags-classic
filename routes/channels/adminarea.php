@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
-Broadcast::channel('adminarea-tags-index', function ($user) {
+use Illuminate\Contracts\Auth\Access\Authorizable;
+
+Broadcast::channel('adminarea-tags-index', function (Authorizable $user) {
     return $user->can('list', app('rinvex.tags.tag'));
 }, ['guards' => ['admin']]);
