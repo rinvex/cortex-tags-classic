@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Models;
 
+use Cortex\Tags\Events\TagCreated;
+use Cortex\Tags\Events\TagDeleted;
+use Cortex\Tags\Events\TagUpdated;
+use Cortex\Tags\Events\TagRestored;
 use Rinvex\Support\Traits\Macroable;
 use Rinvex\Tags\Models\Tag as BaseTag;
 use Cortex\Foundation\Traits\Auditable;
@@ -48,6 +52,18 @@ class Tag extends BaseTag
     use HashidsTrait;
     use HasTimezones;
     use LogsActivity;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => TagCreated::class,
+        'updated' => TagUpdated::class,
+        'deleted' => TagDeleted::class,
+        'restored' => TagRestored::class,
+    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
