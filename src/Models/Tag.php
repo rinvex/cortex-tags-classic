@@ -18,17 +18,17 @@ use Spatie\Activitylog\Traits\LogsActivity;
 /**
  * Cortex\Tags\Models\Tag.
  *
- * @property int                                                                           $id
- * @property string                                                                        $slug
- * @property array                                                                         $name
- * @property array                                                                         $description
- * @property int                                                                           $sort_order
- * @property string                                                                        $group
- * @property string                                                                        $style
- * @property string                                                                        $icon
- * @property \Carbon\Carbon|null                                                           $created_at
- * @property \Carbon\Carbon|null                                                           $updated_at
- * @property \Carbon\Carbon|null                                                           $deleted_at
+ * @property int                 $id
+ * @property string              $slug
+ * @property array               $name
+ * @property array               $description
+ * @property int                 $sort_order
+ * @property string              $group
+ * @property string              $style
+ * @property string              $icon
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Cortex\Foundation\Models\Log[] $activity
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Tags\Models\Tag ordered($direction = 'asc')
