@@ -35,6 +35,7 @@ class InstallCommand extends Command
         $this->call('cortex:migrate:tags', ['--force' => $this->option('force')]);
         $this->call('cortex:seed:tags');
 
-        $this->call('cortex:activate', ['--module' => 'cortex/tags']);
+        $this->call('cortex:autoload:tags', ['--force' => $this->option('force')]);
+        $this->call('cortex:activate:tags', ['--force' => $this->option('force')]);
     }
 }
