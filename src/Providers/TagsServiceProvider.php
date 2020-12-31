@@ -10,10 +10,14 @@ use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 use Cortex\Tags\Console\Commands\SeedCommand;
+use Cortex\Tags\Console\Commands\UnloadCommand;
 use Cortex\Tags\Console\Commands\InstallCommand;
 use Cortex\Tags\Console\Commands\MigrateCommand;
 use Cortex\Tags\Console\Commands\PublishCommand;
 use Cortex\Tags\Console\Commands\RollbackCommand;
+use Cortex\Tags\Console\Commands\ActivateCommand;
+use Cortex\Tags\Console\Commands\AutoloadCommand;
+use Cortex\Tags\Console\Commands\DeactivateCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
@@ -26,6 +30,11 @@ class TagsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        ActivateCommand::class => 'command.cortex.tags.activate',
+        DeactivateCommand::class => 'command.cortex.tags.deactivate',
+        AutoloadCommand::class => 'command.cortex.tags.autoload',
+        UnloadCommand::class => 'command.cortex.tags.unload',
+
         SeedCommand::class => 'command.cortex.tags.seed',
         InstallCommand::class => 'command.cortex.tags.install',
         MigrateCommand::class => 'command.cortex.tags.migrate',
