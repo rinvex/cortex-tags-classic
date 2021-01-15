@@ -172,6 +172,10 @@ class TagsController extends AuthorizedController
      */
     protected function form(Request $request, Tag $tag)
     {
+        if(! $tag->exists && $request->has('replicate') && $replicated = $tag->resolveRouteBinding($request->get('replicate'))){
+            $tag = $replicated->replicate();
+        }
+
         $groups = app('rinvex.tags.tag')->distinct()->get(['group'])->pluck('group', 'group')->toArray();
 
         return view('cortex/tags::adminarea.pages.tag', compact('tag', 'groups'));
