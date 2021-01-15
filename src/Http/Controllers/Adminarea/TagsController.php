@@ -172,7 +172,7 @@ class TagsController extends AuthorizedController
      */
     protected function form(Request $request, Tag $tag)
     {
-        if(! $tag->exists && $request->has('replicate') && $replicated = $tag->resolveRouteBinding($request->get('replicate'))){
+        if (! $tag->exists && $request->has('replicate') && $replicated = $tag->resolveRouteBinding($request->get('replicate'))) {
             $tag = $replicated->replicate();
         }
 
