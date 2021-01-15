@@ -104,8 +104,6 @@ class Tag extends BaseTag
         $this->mergeCasts(['style' => 'string', 'icon' => 'string']);
 
         $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
-
-        $this->setTable(config('rinvex.tags.tables.tags'));
     }
 
     /**
