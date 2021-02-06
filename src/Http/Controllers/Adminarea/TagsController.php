@@ -22,7 +22,7 @@ class TagsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = Tag::class;
+    protected $resource = 'rinvex.tags.models.tag';
 
     /**
      * List all tags.
