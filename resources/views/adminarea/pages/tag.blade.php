@@ -162,7 +162,7 @@
                                         {{ Form::button(trans('cortex/tags::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit']) }}
                                     </div>
 
-                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $tag])
+                                    @include('cortex/foundation::common.partials.timestamps', ['model' => $tag])
 
                                 </div>
 
