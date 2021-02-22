@@ -6,9 +6,9 @@ use Cortex\Tags\Models\Tag;
 use Rinvex\Menus\Models\MenuItem;
 use Rinvex\Menus\Models\MenuGenerator;
 
-Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Tag $tag) {
-    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', 'header', [], function (MenuItem $dropdown) use ($tag) {
-        $dropdown->route(['adminarea.cortex.tags.tags.index'], trans('cortex/tags::common.tags'), 20, 'fa fa-tags')->ifCan('list', $tag)->activateOnRoute('adminarea.cortex.tags.tags');
+Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.taxonomy'), 10, 'fa fa-arrows', 'header', [], function (MenuItem $dropdown) {
+        $dropdown->route(['adminarea.cortex.tags.tags.index'], trans('cortex/tags::common.tags'), 20, 'fa fa-tags')->ifCan('list', app('rinvex.tags.tag'))->activateOnRoute('adminarea.cortex.tags.tags');
     });
 });
 
