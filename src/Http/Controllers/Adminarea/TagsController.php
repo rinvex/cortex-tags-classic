@@ -7,7 +7,7 @@ namespace Cortex\Tags\Http\Controllers\Adminarea;
 use Exception;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;
@@ -210,7 +210,7 @@ class TagsController extends AuthorizedController
     /**
      * Process stored/updated tag.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Foundation\Http\FormRequest $request
      * @param \Cortex\Tags\Models\Tag                 $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse

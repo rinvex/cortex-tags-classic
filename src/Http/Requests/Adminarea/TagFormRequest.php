@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tags\Http\Requests\Adminarea;
 
 use Rinvex\Support\Traits\Escaper;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 
 class TagFormRequest extends FormRequest
 {
