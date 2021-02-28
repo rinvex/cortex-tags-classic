@@ -211,7 +211,7 @@ class TagsController extends AuthorizedController
      * Process stored/updated tag.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Tags\Models\Tag                 $tag
+     * @param \Cortex\Tags\Models\Tag             $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
