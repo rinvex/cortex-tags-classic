@@ -7,7 +7,7 @@ namespace Cortex\Tags\Http\Controllers\Adminarea;
 use Exception;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;
@@ -98,7 +98,7 @@ class TagsController extends AuthorizedController
      */
     public function hoard(ImportFormRequest $request)
     {
-        foreach ((array) $request->get('selected_ids') as $recordId) {
+        foreach ((array) $request->input('selected_ids') as $recordId) {
             $record = app('cortex.foundation.import_record')->find($recordId);
 
             try {
@@ -172,7 +172,7 @@ class TagsController extends AuthorizedController
      */
     protected function form(Request $request, Tag $tag)
     {
-        if (! $tag->exists && $request->has('replicate') && $replicated = $tag->resolveRouteBinding($request->get('replicate'))) {
+        if (! $tag->exists && $request->has('replicate') && $replicated = $tag->resolveRouteBinding($request->input('replicate'))) {
             $tag = $replicated->replicate();
         }
 
@@ -210,8 +210,8 @@ class TagsController extends AuthorizedController
     /**
      * Process stored/updated tag.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Cortex\Tags\Models\Tag                 $tag
+     * @param \Cortex\Foundation\Http\FormRequest $request
+     * @param \Cortex\Tags\Models\Tag             $tag
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
