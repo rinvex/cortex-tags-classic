@@ -5,8 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
-## [v5.0.11] - 2021-05-07
+## [v5.0.11] - 2021-05-11
 - Rename migrations to always run after rinvex core packages
+- Fix constructor initialization order (fill attributes should come next after merging fillables & rules)
 
 ## [v5.0.10] - 2021-03-02
 - Autoload artisan commands
