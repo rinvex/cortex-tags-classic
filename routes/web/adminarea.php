@@ -20,7 +20,7 @@ Route::domain(domain())->group(function () {
                  Route::get('{tag}')->name('show')->uses('TagsController@show');
                  Route::get('{tag}/edit')->name('edit')->uses('TagsController@edit');
                  Route::put('{tag}/edit')->name('update')->uses('TagsController@update');
-                 Route::get('{tag}/logs')->name('logs')->uses('TagsController@logs');
+                 Route::match(['get', 'post'], '{tag}/logs')->name('logs')->uses('TagsController@logs');
                  Route::delete('{tag}')->name('destroy')->uses('TagsController@destroy');
              });
          });
