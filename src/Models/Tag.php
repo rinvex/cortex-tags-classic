@@ -7,6 +7,7 @@ namespace Cortex\Tags\Models;
 use Cortex\Tags\Events\TagCreated;
 use Cortex\Tags\Events\TagDeleted;
 use Cortex\Tags\Events\TagUpdated;
+use Spatie\Activitylog\LogOptions;
 use Cortex\Tags\Events\TagRestored;
 use Rinvex\Support\Traits\Macroable;
 use Rinvex\Tags\Models\Tag as BaseTag;
@@ -66,31 +67,6 @@ class Tag extends BaseTag
     ];
 
     /**
-     * Indicates whether to log only dirty attributes or all.
-     *
-     * @var bool
-     */
-    protected static $logOnlyDirty = true;
-
-    /**
-     * The attributes that are logged on change.
-     *
-     * @var array
-     */
-    protected static $logFillable = true;
-
-    /**
-     * The attributes that are ignored on change.
-     *
-     * @var array
-     */
-    protected static $ignoreChangedAttributes = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    /**
      * Create a new Eloquent model instance.
      *
      * @param array $attributes
@@ -104,6 +80,19 @@ class Tag extends BaseTag
         $this->mergeRules(['style' => 'nullable|string|strip_tags|max:150', 'icon' => 'nullable|string|strip_tags|max:150']);
 
         parent::__construct($attributes);
+    }
+
+    /**
+     * Set sensible Activity Log Options.
+     *
+     * @return \Spatie\Activitylog\LogOptions
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+                         ->logFillable()
+                         ->logOnlyDirty()
+                         ->dontSubmitEmptyLogs();
     }
 
     /**
