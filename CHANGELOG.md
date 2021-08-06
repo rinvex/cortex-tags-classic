@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v5.0.14] - 2021-08-06
+- Simplify route prefixes
+- Update composer dependencies
+
 ## [v5.0.13] - 2021-05-25
 - Replace deprecated `Breadcrumbs::register` with `Breadcrumbs::for`
 - Update composer dependencies diglactic/laravel-breadcrumbs to v7
@@ -214,6 +218,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v5.0.14]: https://github.com/rinvex/cortex-tags/compare/v5.0.13...v5.0.14
 [v5.0.13]: https://github.com/rinvex/cortex-tags/compare/v5.0.12...v5.0.13
 [v5.0.12]: https://github.com/rinvex/cortex-tags/compare/v5.0.11...v5.0.12
 [v5.0.11]: https://github.com/rinvex/cortex-tags/compare/v5.0.10...v5.0.11
