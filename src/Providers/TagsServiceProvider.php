@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Cortex\Tags\Providers;
 
 use Cortex\Tags\Models\Tag;
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
-use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
@@ -36,12 +34,8 @@ class TagsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router, Dispatcher $dispatcher): void
+    public function boot(): void
     {
-        // Bind route models and constrains
-        $router->pattern('tag', '[a-zA-Z0-9-_]+');
-        $router->model('tag', config('rinvex.tags.models.tag'));
-
         // Map relations
         Relation::morphMap([
             'tag' => config('rinvex.tags.models.tag'),
