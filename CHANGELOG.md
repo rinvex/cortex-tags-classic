@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v6.1.0] - 2021-08-22
+- Drop PHP v7 support, and upgrade rinvex package dependencies to next major version
+
 ## [v6.0.0] - 2021-08-18
 - Update composer dependency cortex/foundation to v7
 
@@ -228,6 +231,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2017-09-09
 - Tag first release
 
+[v6.1.0]: https://github.com/rinvex/cortex-tags/compare/v6.0.0...v6.1.0
 [v6.0.0]: https://github.com/rinvex/cortex-tags/compare/v5.0.16...v6.0.0
 [v5.0.16]: https://github.com/rinvex/cortex-tags/compare/v5.0.15...v5.0.16
 [v5.0.15]: https://github.com/rinvex/cortex-tags/compare/v5.0.14...v5.0.15
