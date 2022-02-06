@@ -7,7 +7,6 @@ namespace Cortex\Tags\Providers;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
-use Illuminate\Database\Eloquent\Relations\Relation;
 
 class TagsServiceProvider extends ServiceProvider
 {
@@ -27,18 +26,5 @@ class TagsServiceProvider extends ServiceProvider
         // Bind eloquent models to IoC container
         $this->app['config']['rinvex.tags.models.tag'] === Tag::class
         || $this->app->alias('rinvex.tags.tag', Tag::class);
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
-        // Map relations
-        Relation::morphMap([
-            'tag' => config('rinvex.tags.models.tag'),
-        ]);
     }
 }
