@@ -79,14 +79,13 @@ class TagsController extends AuthorizedController
      *
      * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
      * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
+     * @param \Cortex\Tags\Models\Tag                            $tag
      *
      * @return void
      */
-    public function stash(ImportFormRequest $request, DefaultImporter $importer)
+    public function stash(ImportFormRequest $request, DefaultImporter $importer, Tag $tag)
     {
-        // Handle the import
-        $importer->config['resource'] = $this->resource;
-        $importer->handleImport();
+        $importer->of($tag)->import($request->file('file'));
     }
 
     /**
