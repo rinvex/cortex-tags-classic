@@ -12,10 +12,7 @@ Route::domain('{adminarea}')->group(function () {
         // Tags Routes
              Route::name('cortex.tags.tags.')->prefix('tags')->group(function () {
                  Route::match(['get', 'post'], '/')->name('index')->uses([TagsController::class, 'index']);
-                 Route::get('import')->name('import')->uses([TagsController::class, 'import']);
-                 Route::post('import')->name('stash')->uses([TagsController::class, 'stash']);
-                 Route::post('hoard')->name('hoard')->uses([TagsController::class, 'hoard']);
-                 Route::get('import/logs')->name('import.logs')->uses([TagsController::class, 'importLogs']);
+                 Route::post('import')->name('import')->uses([TagsController::class, 'import']);
                  Route::get('create')->name('create')->uses([TagsController::class, 'create']);
                  Route::post('create')->name('store')->uses([TagsController::class, 'store']);
                  Route::get('{tag}')->name('show')->uses([TagsController::class, 'show']);
