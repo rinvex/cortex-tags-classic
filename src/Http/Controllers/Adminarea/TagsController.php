@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Http\Controllers\Adminarea;
 
-use Cortex\Foundation\Importers\InsertImporter;
-use Exception;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Http\Request;
 use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
+use Cortex\Foundation\Importers\InsertImporter;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;
 use Cortex\Foundation\Http\Requests\ImportFormRequest;
 use Cortex\Tags\Http\Requests\Adminarea\TagFormRequest;
