@@ -35,6 +35,7 @@ class TagsController extends AuthorizedController
     {
         return $tagsDataTable->with([
             'id' => 'adminarea-cortex-tags-tags-index',
+            'routePrefix' => 'adminarea.cortex.tags.tags',
             'pusher' => ['entity' => 'tag', 'channel' => 'cortex.tags.tags.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
