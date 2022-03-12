@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Http\Controllers\Adminarea;
 
-use Exception;
 use Cortex\Tags\Models\Tag;
 use Illuminate\Http\Request;
 use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
-use Cortex\Foundation\Importers\DefaultImporter;
+use Cortex\Foundation\Importers\InsertImporter;
 use Cortex\Tags\DataTables\Adminarea\TagsDataTable;
-use Cortex\Foundation\DataTables\ImportLogsDataTable;
 use Cortex\Foundation\Http\Requests\ImportFormRequest;
 use Cortex\Tags\Http\Requests\Adminarea\TagFormRequest;
-use Cortex\Foundation\DataTables\ImportRecordsDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
 class TagsController extends AuthorizedController
@@ -35,6 +32,7 @@ class TagsController extends AuthorizedController
     {
         return $tagsDataTable->with([
             'id' => 'adminarea-cortex-tags-tags-index',
+            'routePrefix' => 'adminarea.cortex.tags.tags',
             'pusher' => ['entity' => 'tag', 'channel' => 'cortex.tags.tags.index'],
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
@@ -59,81 +57,15 @@ class TagsController extends AuthorizedController
     /**
      * Import tags.
      *
-     * @param \Cortex\Tags\Models\Tag                              $tag
-     * @param \Cortex\Foundation\DataTables\ImportRecordsDataTable $importRecordsDataTable
-     *
-     * @return \Illuminate\View\View
-     */
-    public function import(Tag $tag, ImportRecordsDataTable $importRecordsDataTable)
-    {
-        return $importRecordsDataTable->with([
-            'resource' => $tag,
-            'tabs' => 'adminarea.cortex.tags.tags.tabs',
-            'url' => route('adminarea.cortex.tags.tags.stash'),
-            'id' => "adminarea-cortex-tags-tags-{$tag->getRouteKey()}-import",
-        ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
-    }
-
-    /**
-     * Stash tags.
-     *
      * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
-     * @param \Cortex\Foundation\Importers\DefaultImporter       $importer
+     * @param \Cortex\Foundation\Importers\InsertImporter        $importer
+     * @param \Cortex\Tags\Models\Tag                            $tag
      *
      * @return void
      */
-    public function stash(ImportFormRequest $request, DefaultImporter $importer)
+    public function import(ImportFormRequest $request, InsertImporter $importer, Tag $tag)
     {
-        // Handle the import
-        $importer->config['resource'] = $this->resource;
-        $importer->handleImport();
-    }
-
-    /**
-     * Hoard tags.
-     *
-     * @param \Cortex\Foundation\Http\Requests\ImportFormRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function hoard(ImportFormRequest $request)
-    {
-        foreach ((array) $request->input('selected_ids') as $recordId) {
-            $record = app('cortex.foundation.import_record')->find($recordId);
-
-            try {
-                $fillable = collect($record['data'])->intersectByKeys(array_flip(app('rinvex.tags.tag')->getFillable()))->toArray();
-
-                tap(app('rinvex.tags.tag')->firstOrNew($fillable), function ($instance) use ($record) {
-                    $instance->save() && $record->delete();
-                });
-            } catch (Exception $exception) {
-                $record->notes = $exception->getMessage().(method_exists($exception, 'getMessageBag') ? "\n".json_encode($exception->getMessageBag())."\n\n" : '');
-                $record->status = 'fail';
-                $record->save();
-            }
-        }
-
-        return intend([
-            'back' => true,
-            'with' => ['success' => trans('cortex/foundation::messages.import_complete')],
-        ]);
-    }
-
-    /**
-     * List tag import logs.
-     *
-     * @param \Cortex\Foundation\DataTables\ImportLogsDataTable $importLogsDatatable
-     *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function importLogs(ImportLogsDataTable $importLogsDatatable)
-    {
-        return $importLogsDatatable->with([
-            'resource' => trans('cortex/tags::common.tag'),
-            'tabs' => 'adminarea.cortex.tags.tags.tabs',
-            'id' => 'adminarea-cortex-tags-tags-import-logs',
-        ])->render('cortex/foundation::adminarea.pages.datatable-tab');
+        $importer->withModel($tag)->import($request->file('file'));
     }
 
     /**

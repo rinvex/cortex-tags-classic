@@ -24,7 +24,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @includeWhen($tag->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'tag', 'model' => $tag, 'resource' => trans('cortex/tags::common.tag'), 'routePrefix' => 'adminarea.cortex.tags.tags.'])
+                @includeWhen($tag->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'tag', 'model' => $tag, 'resource' => trans('cortex/tags::common.tag'), 'routePrefix' => 'adminarea.cortex.tags.tags'])
                 {!! Menu::render('adminarea.cortex.tags.tags.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
