@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Tags\DataTables\Adminarea;
 
 use Cortex\Tags\Models\Tag;
+use Illuminate\Http\JsonResponse;
 use Cortex\Foundation\DataTables\AbstractDataTable;
 use Cortex\Tags\Transformers\Adminarea\TagTransformer;
 
@@ -42,7 +43,7 @@ class TagsDataTable extends AbstractDataTable
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ajax()
+    public function ajax(): JsonResponse
     {
         return datatables($this->query())
             ->setTransformer(app($this->transformer))
