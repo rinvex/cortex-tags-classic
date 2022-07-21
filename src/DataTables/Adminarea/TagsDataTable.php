@@ -63,7 +63,7 @@ class TagsDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.cortex.tags.tags.edit\', {tag: full.id})+"\">"+data+"</a>"';
 
         return [
-            'id' => ['checkboxes' => '{"selectRow": true}', 'exportable' => false, 'printable' => false],
+            'id' => ['checkboxes' => json_decode('{"selectRow": true}'), 'exportable' => false, 'printable' => false],
             'name' => ['title' => trans('cortex/tags::common.name'), 'render' => $link, 'responsivePriority' => 0],
             'group' => ['title' => trans('cortex/tags::common.group'), 'visible' => false],
             'created_at' => ['title' => trans('cortex/tags::common.created_at'), 'render' => "moment(data).format('YYYY-MM-DD, hh:mm:ss A')"],
