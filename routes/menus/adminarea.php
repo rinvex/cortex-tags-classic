@@ -14,7 +14,7 @@ Menu::register('adminarea.sidebar', function (MenuGenerator $menu) {
 
 Menu::register('adminarea.cortex.tags.tags.tabs', function (MenuGenerator $menu, Tag $tag) {
     $menu->route(['adminarea.cortex.tags.tags.import'], trans('cortex/tags::common.records'))->ifCan('import', $tag)->if(Route::is('adminarea.cortex.tags.tags.import*'));
-    $menu->route(['adminarea.cortex.tags.tags.import.logs'], trans('cortex/tags::common.logs'))->ifCan('import', $tag)->if(Route::is('adminarea.cortex.tags.tags.import*'));
+    $menu->route(['adminarea.cortex.tags.tags.import.logs'], trans('cortex/tags::common.logs'))->ifCan('audit', $tag)->if(Route::is('adminarea.cortex.tags.tags.import*'));
     $menu->route(['adminarea.cortex.tags.tags.create'], trans('cortex/tags::common.details'))->ifCan('create', $tag)->if(Route::is('adminarea.cortex.tags.tags.create'));
     $menu->route(['adminarea.cortex.tags.tags.edit', ['tag' => $tag]], trans('cortex/tags::common.details'))->ifCan('update', $tag)->if($tag->exists);
     $menu->route(['adminarea.cortex.tags.tags.logs', ['tag' => $tag]], trans('cortex/tags::common.logs'))->ifCan('audit', $tag)->if($tag->exists);
