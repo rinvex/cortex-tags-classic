@@ -6,7 +6,9 @@ namespace Cortex\Tags\Console\Commands;
 
 use Illuminate\Console\Command;
 use Cortex\Tags\Database\Seeders\CortexTagsSeeder;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'cortex:seed:tags')]
 class SeedCommand extends Command
 {
     /**

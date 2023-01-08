@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Console\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Rinvex\Tags\Console\Commands\PublishCommand as BasePublishCommand;
 
+#[AsCommand(name: 'cortex:publish:tags')]
 class PublishCommand extends BasePublishCommand
 {
     /**

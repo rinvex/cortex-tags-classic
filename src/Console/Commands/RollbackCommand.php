@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Console\Commands;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Rinvex\Tags\Console\Commands\RollbackCommand as BaseRollbackCommand;
 
+#[AsCommand(name: 'cortex:rollback:tags')]
 class RollbackCommand extends BaseRollbackCommand
 {
     /**
