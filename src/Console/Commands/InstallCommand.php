@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Cortex\Tags\Console\Commands;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'cortex:install:tags')]
 class InstallCommand extends Command
 {
     /**
