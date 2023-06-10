@@ -24,7 +24,8 @@ class TagsServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Bind eloquent models to IoC container
-        $this->app['config']['rinvex.tags.models.tag'] === Tag::class
-        || $this->app->alias('rinvex.tags.tag', Tag::class);
+        $this->registerModels([
+            'rinvex.tags.tag' => Tag::class,
+        ]);
     }
 }
