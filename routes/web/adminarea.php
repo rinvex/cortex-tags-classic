@@ -8,8 +8,7 @@ Route::domain('{adminarea}')->group(function () {
     Route::name('adminarea.')
          ->middleware(['web', 'nohttpcache', 'can:access-adminarea'])
          ->prefix(route_prefix('adminarea'))->group(function () {
-
-        // Tags Routes
+             // Tags Routes
              Route::name('cortex.tags.tags.')->prefix('tags')->group(function () {
                  Route::match(['get', 'post'], '/')->name('index')->uses([TagsController::class, 'index']);
                  Route::post('import')->name('import')->uses([TagsController::class, 'import']);
