@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Tags\Console\Commands;
 
-use Rinvex\Tags\Console\Commands\MigrateCommand as BaseMigrateCommand;
 use Symfony\Component\Console\Attribute\AsCommand;
+use Rinvex\Tags\Console\Commands\MigrateCommand as BaseMigrateCommand;
 
 #[AsCommand(name: 'cortex:migrate:tags')]
 class MigrateCommand extends BaseMigrateCommand
