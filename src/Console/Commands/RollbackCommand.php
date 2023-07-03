@@ -32,8 +32,8 @@ class RollbackCommand extends BaseRollbackCommand
     public function handle(): void
     {
         $path = config('cortex.tags.autoload_migrations') ?
-            'app/cortex/tags/database/migrations' :
-            'database/migrations/cortex/tags';
+            realpath(__DIR__.'/../../../database/migrations') :
+            $this->laravel->databasePath('migrations/cortex/tags');
 
         if (file_exists($path)) {
             $this->call('migrate:reset', [
