@@ -17,6 +17,7 @@ class CortexTagsSeeder extends Seeder
     {
         $abilities = [
             ['name' => 'list', 'title' => 'List tags', 'entity_type' => 'tag'],
+            ['name' => 'view', 'title' => 'View tags', 'entity_type' => 'tag'],
             ['name' => 'import', 'title' => 'Import tags', 'entity_type' => 'tag'],
             ['name' => 'export', 'title' => 'Export tags', 'entity_type' => 'tag'],
             ['name' => 'create', 'title' => 'Create tags', 'entity_type' => 'tag'],
